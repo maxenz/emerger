@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1A8DFAE4-4E6F-4AD5-9B09-CFA395AA2065}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ShamanExpressDLL</RootNamespace>
+    <AssemblyName>ShamanExpressDLL</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ShamanExpressDLL.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ShamanExpressDLL.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\ItemCombo.vb" />
+    <Compile Include="Clases\LastExec.vb" />
+    <Compile Include="Clases\LogShaman.vb" />
+    <Compile Include="Clases\Mensajeria.vb" />
+    <Compile Include="Clases\NETCnns.vb" />
+    <Compile Include="Clases\NETTrans.vb" />
+    <Compile Include="Clases\NumerosLetra.vb" />
+    <Compile Include="Clases\NumerosLetraV2.vb" />
+    <Compile Include="Clases\StartUp.vb" />
+    <Compile Include="dbClasesControladores\conAdjuntosClasificaciones.vb" />
+    <Compile Include="dbClasesControladores\conAgentesRing.vb" />
+    <Compile Include="dbClasesControladores\conAlicuotasIva.vb" />
+    <Compile Include="dbClasesControladores\conAptoFisicoExamenes.vb" />
+    <Compile Include="dbClasesControladores\conAptoFisicoExamenesItems.vb" />
+    <Compile Include="dbClasesControladores\conAptoFisicoGrupos.vb" />
+    <Compile Include="dbClasesControladores\conAptoFisicoGruposItems.vb" />
+    <Compile Include="dbClasesControladores\conAptoFisicoInfo.vb" />
+    <Compile Include="dbClasesControladores\conAsientos.vb" />
+    <Compile Include="dbClasesControladores\conAsientosCuentas.vb" />
+    <Compile Include="dbClasesControladores\conAtributosDinamicos.vb" />
+    <Compile Include="dbClasesControladores\conAuditIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conBancos.vb" />
+    <Compile Include="dbClasesControladores\conBanderasBarcos.vb" />
+    <Compile Include="dbClasesControladores\conBasesOperativas.vb" />
+    <Compile Include="dbClasesControladores\conBasesOperativasLocalidades.vb" />
+    <Compile Include="dbClasesControladores\conBasesOperativasPoligonos.vb" />
+    <Compile Include="dbClasesControladores\conBitacoras.vb" />
+    <Compile Include="dbClasesControladores\conCentrosAtencion.vb" />
+    <Compile Include="dbClasesControladores\conCentrosAtencionContactos.vb" />
+    <Compile Include="dbClasesControladores\conCentrosAtencionSalas.vb" />
+    <Compile Include="dbClasesControladores\conClientes.vb" />
+    <Compile Include="dbClasesControladores\conClientesAlicuotas.vb" />
+    <Compile Include="dbClasesControladores\conClientesBonificaciones.vb" />
+    <Compile Include="dbClasesControladores\conClientesContactos.vb" />
+    <Compile Include="dbClasesControladores\conClientesGradosOperativos.vb" />
+    <Compile Include="dbClasesControladores\conClientesIntegrantes.vb" />
+    <Compile Include="dbClasesControladores\conClientesIntegrantesPlanes.vb" />
+    <Compile Include="dbClasesControladores\conClientesMailing.vb" />
+    <Compile Include="dbClasesControladores\conClientesMediosPago.vb" />
+    <Compile Include="dbClasesControladores\conClientesModelos.vb" />
+    <Compile Include="dbClasesControladores\conClientesModulos.vb" />
+    <Compile Include="dbClasesControladores\conClientesModulosConceptos.vb" />
+    <Compile Include="dbClasesControladores\conClientesPlanes.vb" />
+    <Compile Include="dbClasesControladores\conClientesPracticas.vb" />
+    <Compile Include="dbClasesControladores\conClientesTarifas.vb" />
+    <Compile Include="dbClasesControladores\conClientesTarifasPracticas.vb" />
+    <Compile Include="dbClasesControladores\conCoberturasIndividuales.vb" />
+    <Compile Include="dbClasesControladores\conCobradores.vb" />
+    <Compile Include="dbClasesControladores\conConceptosFacturacion.vb" />
+    <Compile Include="dbClasesControladores\conConfigSACPuntajes.vb" />
+    <Compile Include="dbClasesControladores\conConfiguracion.vb" />
+    <Compile Include="dbClasesControladores\conConfiguracionClinica.vb" />
+    <Compile Include="dbClasesControladores\conConfiguracionesRegionales.vb" />
+    <Compile Include="dbClasesControladores\conConfiguracionesRegionalesReglas.vb" />
+    <Compile Include="dbClasesControladores\conCuentasAsientos.vb" />
+    <Compile Include="dbClasesControladores\conDepartamentos.vb" />
+    <Compile Include="dbClasesControladores\conDepartamentosPuestos.vb" />
+    <Compile Include="dbClasesControladores\conDiagnosticos.vb" />
+    <Compile Include="dbClasesControladores\conDistancias.vb" />
+    <Compile Include="dbClasesControladores\conDocumentacionVehiculos.vb" />
+    <Compile Include="dbClasesControladores\conEmpresasLegales.vb" />
+    <Compile Include="dbClasesControladores\conEmpresasLegalesCMS.vb" />
+    <Compile Include="dbClasesControladores\conEmpresasLegalesImpuestos.vb" />
+    <Compile Include="dbClasesControladores\conEncuestas.vb" />
+    <Compile Include="dbClasesControladores\conEncuestasIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conEncuestasIncidentesItems.vb" />
+    <Compile Include="dbClasesControladores\conEncuestasItems.vb" />
+    <Compile Include="dbClasesControladores\conEncuestasRespuestas.vb" />
+    <Compile Include="dbClasesControladores\conEquipamientos.vb" />
+    <Compile Include="dbClasesControladores\conEspecialidadesMedicas.vb" />
+    <Compile Include="dbClasesControladores\conEstadosCivil.vb" />
+    <Compile Include="dbClasesControladores\conEstadosTurnos.vb" />
+    <Compile Include="dbClasesControladores\conFeriados.vb" />
+    <Compile Include="dbClasesControladores\conFormasPago.vb" />
+    <Compile Include="dbClasesControladores\conGoogleMapsImagenes.vb" />
+    <Compile Include="dbClasesControladores\conGradosOperativos.vb" />
+    <Compile Include="dbClasesControladores\conGradosOperativosConfig.vb" />
+    <Compile Include="dbClasesControladores\conGrillaOperativa.vb" />
+    <Compile Include="dbClasesControladores\conGrillaOperativaTripulantes.vb" />
+    <Compile Include="dbClasesControladores\conImagenDocumentos.vb" />
+    <Compile Include="dbClasesControladores\conImpuestos.vb" />
+    <Compile Include="dbClasesControladores\conImpuestosImportaciones.vb" />
+    <Compile Include="dbClasesControladores\conIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesAdjuntos.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesAtributos.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesDomicilios.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesLlamados.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesObservaciones.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesOtrosConceptos.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesPracticas.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesPracticasDetalle.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesProgramaciones.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesSintomas.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesSintomasPregs.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesSucesos.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesViajes.vb" />
+    <Compile Include="dbClasesControladores\conIncidentesViajesMensajes.vb" />
+    <Compile Include="dbClasesControladores\conInfoPacienteGrupos.vb" />
+    <Compile Include="dbClasesControladores\conInfoPacienteItems.vb" />
+    <Compile Include="dbClasesControladores\conInsumos.vb" />
+    <Compile Include="dbClasesControladores\conInsumosMovimientos.vb" />
+    <Compile Include="dbClasesControladores\conInsumosStock.vb" />
+    <Compile Include="dbClasesControladores\conIntegrantesClasificaciones.vb" />
+    <Compile Include="dbClasesControladores\conIntegrantesCursos.vb" />
+    <Compile Include="dbClasesControladores\conlckIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conlckJobs.vb" />
+    <Compile Include="dbClasesControladores\conlckTraslados.vb" />
+    <Compile Include="dbClasesControladores\conLiquidacionesPrestadores.vb" />
+    <Compile Include="dbClasesControladores\conLocalidades.vb" />
+    <Compile Include="dbClasesControladores\conMarcasEquipamiento.vb" />
+    <Compile Include="dbClasesControladores\conMarcasModelos.vb" />
+    <Compile Include="dbClasesControladores\conMediosPagoIntegraciones.vb" />
+    <Compile Include="dbClasesControladores\conMetodosMensajeria.vb" />
+    <Compile Include="dbClasesControladores\conMotivosBajas.vb" />
+    <Compile Include="dbClasesControladores\conMotivosCondicionales.vb" />
+    <Compile Include="dbClasesControladores\conMotivosNoRealizacion.vb" />
+    <Compile Include="dbClasesControladores\conMoviles.vb" />
+    <Compile Include="dbClasesControladores\conMovilesActuales.vb" />
+    <Compile Include="dbClasesControladores\conMovilesHistorias.vb" />
+    <Compile Include="dbClasesControladores\conMovilesLocalidades.vb" />
+    <Compile Include="dbClasesControladores\conMovilesLocalidadesPrioridades.vb" />
+    <Compile Include="dbClasesControladores\conMovilesMensajeria.vb" />
+    <Compile Include="dbClasesControladores\conMovilesPoligonos.vb" />
+    <Compile Include="dbClasesControladores\conMovilesSucesos.vb" />
+    <Compile Include="dbClasesControladores\conNacionalidades.vb" />
+    <Compile Include="dbClasesControladores\conNomenclador.vb" />
+    <Compile Include="dbClasesControladores\conPaises.vb" />
+    <Compile Include="dbClasesControladores\conPerfiles.vb" />
+    <Compile Include="dbClasesControladores\conPerfilesGradosOperativos.vb" />
+    <Compile Include="dbClasesControladores\conPerfilesNodos.vb" />
+    <Compile Include="dbClasesControladores\conPerfilesTiposMoviles.vb" />
+    <Compile Include="dbClasesControladores\conPerfilesZonasGeograficas.vb" />
+    <Compile Include="dbClasesControladores\conPeriodosLiquidaciones.vb" />
+    <Compile Include="dbClasesControladores\conPersonal.vb" />
+    <Compile Include="dbClasesControladores\conPersonalHorariosAtencion.vb" />
+    <Compile Include="dbClasesControladores\conPersonalMatriculas.vb" />
+    <Compile Include="dbClasesControladores\conPlanes.vb" />
+    <Compile Include="dbClasesControladores\conPlanesBonificaciones.vb" />
+    <Compile Include="dbClasesControladores\conPlanesFamilias.vb" />
+    <Compile Include="dbClasesControladores\conPlanesGradosOperativos.vb" />
+    <Compile Include="dbClasesControladores\conPlanesModulos.vb" />
+    <Compile Include="dbClasesControladores\conPlanesModulosConceptos.vb" />
+    <Compile Include="dbClasesControladores\conPlanesTarifasIntegrantes.vb" />
+    <Compile Include="dbClasesControladores\conPlanesTarifasIntegrantesRangos.vb" />
+    <Compile Include="dbClasesControladores\conPoligonos.vb" />
+    <Compile Include="dbClasesControladores\conPoligonosCoordenadas.vb" />
+    <Compile Include="dbClasesControladores\conPracticas.vb" />
+    <Compile Include="dbClasesControladores\conPracticasAgrupaciones.vb" />
+    <Compile Include="dbClasesControladores\conPreIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conPrestadores.vb" />
+    <Compile Include="dbClasesControladores\conPrestadoresClientes.vb" />
+    <Compile Include="dbClasesControladores\conPrestadoresContactos.vb" />
+    <Compile Include="dbClasesControladores\conPrestadoresTarifas.vb" />
+    <Compile Include="dbClasesControladores\conProveedores.vb" />
+    <Compile Include="dbClasesControladores\conProvincias.vb" />
+    <Compile Include="dbClasesControladores\conReporteadores.vb" />
+    <Compile Include="dbClasesControladores\conReporteadoresFields.vb" />
+    <Compile Include="dbClasesControladores\conRubrosClientes.vb" />
+    <Compile Include="dbClasesControladores\conSanatorios.vb" />
+    <Compile Include="dbClasesControladores\conSanatoriosContactos.vb" />
+    <Compile Include="dbClasesControladores\conSectoresArreglosVehiculos.vb" />
+    <Compile Include="dbClasesControladores\conselIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conselVentasDocumentos.vb" />
+    <Compile Include="dbClasesControladores\conServicesVehiculos.vb" />
+    <Compile Include="dbClasesControladores\conSintomas.vb" />
+    <Compile Include="dbClasesControladores\conSintomasPreguntas.vb" />
+    <Compile Include="dbClasesControladores\conSituacionesIva.vb" />
+    <Compile Include="dbClasesControladores\conSucesosIncidentes.vb" />
+    <Compile Include="dbClasesControladores\consysNodos.vb" />
+    <Compile Include="dbClasesControladores\conTalonarios.vb" />
+    <Compile Include="dbClasesControladores\conTalonariosDocumentos.vb" />
+    <Compile Include="dbClasesControladores\conTarifas.vb" />
+    <Compile Include="dbClasesControladores\conTarifasPracticas.vb" />
+    <Compile Include="dbClasesControladores\conTarifasPracticasDetalle.vb" />
+    <Compile Include="dbClasesControladores\conTarifasPrestaciones.vb" />
+    <Compile Include="dbClasesControladores\conTarifasVigencias.vb" />
+    <Compile Include="dbClasesControladores\conTarjetasCredito.vb" />
+    <Compile Include="dbClasesControladores\conTemplates.vb" />
+    <Compile Include="dbClasesControladores\conTemplatesFields.vb" />
+    <Compile Include="dbClasesControladores\conTemplatesFiltros.vb" />
+    <Compile Include="dbClasesControladores\conTerminales.vb" />
+    <Compile Include="dbClasesControladores\conTiposBarcos.vb" />
+    <Compile Include="dbClasesControladores\conTiposComprobantes.vb" />
+    <Compile Include="dbClasesControladores\conTiposCuentas.vb" />
+    <Compile Include="dbClasesControladores\conTiposDocumentos.vb" />
+    <Compile Include="dbClasesControladores\conTiposEquipamiento.vb" />
+    <Compile Include="dbClasesControladores\conTiposGastos.vb" />
+    <Compile Include="dbClasesControladores\conTiposInsumos.vb" />
+    <Compile Include="dbClasesControladores\conTiposMatriculas.vb" />
+    <Compile Include="dbClasesControladores\conTiposMoviles.vb" />
+    <Compile Include="dbClasesControladores\conTiposMovimientosInsumos.vb" />
+    <Compile Include="dbClasesControladores\conTiposOtrosEgresos.vb" />
+    <Compile Include="dbClasesControladores\contmpClientesIntegrantes.vb" />
+    <Compile Include="dbClasesControladores\contmpLogFacturacion.vb" />
+    <Compile Include="dbClasesControladores\conTurnos.vb" />
+    <Compile Include="dbClasesControladores\conTurnosExcepciones.vb" />
+    <Compile Include="dbClasesControladores\conTurnosNomenclador.vb" />
+    <Compile Include="dbClasesControladores\conUnidadesArancelarias.vb" />
+    <Compile Include="dbClasesControladores\conUsuarios.vb" />
+    <Compile Include="dbClasesControladores\conUsuariosAgentes.vb" />
+    <Compile Include="dbClasesControladores\conUsuariosLogueados.vb" />
+    <Compile Include="dbClasesControladores\conUsuariosMailing.vb" />
+    <Compile Include="dbClasesControladores\conUsuariosNodos.vb" />
+    <Compile Include="dbClasesControladores\conUsuariosPreferencias.vb" />
+    <Compile Include="dbClasesControladores\conUsuariosRelaciones.vb" />
+    <Compile Include="dbClasesControladores\conVehiculos.vb" />
+    <Compile Include="dbClasesControladores\conVehiculosControles.vb" />
+    <Compile Include="dbClasesControladores\conVehiculosControlesServices.vb" />
+    <Compile Include="dbClasesControladores\conVehiculosDocumentacion.vb" />
+    <Compile Include="dbClasesControladores\conVentasDocIncidentes.vb" />
+    <Compile Include="dbClasesControladores\conVentasDocMarcas.vb" />
+    <Compile Include="dbClasesControladores\conVentasDocRenglones.vb" />
+    <Compile Include="dbClasesControladores\conVentasDocumentos.vb" />
+    <Compile Include="dbClasesControladores\conZonasGeograficas.vb" />
+    <Compile Include="dbClases\typAdjuntosClasificaciones.vb" />
+    <Compile Include="dbClases\typAgentesRing.vb" />
+    <Compile Include="dbClases\typAlicuotasIva.vb" />
+    <Compile Include="dbClases\typAptoFisicoExamenes.vb" />
+    <Compile Include="dbClases\typAptoFisicoExamenesItems.vb" />
+    <Compile Include="dbClases\typAptoFisicoGrupos.vb" />
+    <Compile Include="dbClases\typAptoFisicoGruposItems.vb" />
+    <Compile Include="dbClases\typAptoFisicoInfo.vb" />
+    <Compile Include="dbClases\typAsientos.vb" />
+    <Compile Include="dbClases\typAsientosCuentas.vb" />
+    <Compile Include="dbClases\typAtributosDinamicos.vb" />
+    <Compile Include="dbClases\typAuditIncidentes.vb" />
+    <Compile Include="dbClases\typAuditIncidentesDomicilios.vb" />
+    <Compile Include="dbClases\typBancos.vb" />
+    <Compile Include="dbClases\typBanderasBarcos.vb" />
+    <Compile Include="dbClases\typBasesOperativas.vb" />
+    <Compile Include="dbClases\typBasesOperativasLocalidades.vb" />
+    <Compile Include="dbClases\typBasesOperativasPoligonos.vb" />
+    <Compile Include="dbClases\typBitacoras.vb" />
+    <Compile Include="dbClases\typCentrosAtencion.vb" />
+    <Compile Include="dbClases\typCentrosAtencionContactos.vb" />
+    <Compile Include="dbClases\typCentrosAtencionHorarios.vb" />
+    <Compile Include="dbClases\typCentrosAtencionSalas.vb" />
+    <Compile Include="dbClases\typClientes.vb" />
+    <Compile Include="dbClases\typClientesAlicuotas.vb" />
+    <Compile Include="dbClases\typClientesBonificaciones.vb" />
+    <Compile Include="dbClases\typClientesContactos.vb" />
+    <Compile Include="dbClases\typClientesGradosOperativos.vb" />
+    <Compile Include="dbClases\typClientesIntegrantes.vb" />
+    <Compile Include="dbClases\typClientesIntegrantesAtributos.vb" />
+    <Compile Include="dbClases\typClientesIntegrantesInfoPaciente.vb" />
+    <Compile Include="dbClases\typClientesIntegrantesPlanes.vb" />
+    <Compile Include="dbClases\typClientesMailing.vb" />
+    <Compile Include="dbClases\typClientesMediosPago.vb" />
+    <Compile Include="dbClases\typClientesModelos.vb" />
+    <Compile Include="dbClases\typClientesModulos.vb" />
+    <Compile Include="dbClases\typClientesModulosConceptos.vb" />
+    <Compile Include="dbClases\typClientesPlanes.vb" />
+    <Compile Include="dbClases\typClientesPracticas.vb" />
+    <Compile Include="dbClases\typClientesTarifas.vb" />
+    <Compile Include="dbClases\typClientesTarifasPracticas.vb" />
+    <Compile Include="dbClases\typCoberturasIndividuales.vb" />
+    <Compile Include="dbClases\typCobradores.vb" />
+    <Compile Include="dbClases\typCodigosPostales.vb" />
+    <Compile Include="dbClases\typConceptosFacturacion.vb" />
+    <Compile Include="dbClases\typConfigSACPuntajes.vb" />
+    <Compile Include="dbClases\typConfiguracion.vb" />
+    <Compile Include="dbClases\typConfiguracionClinica.vb" />
+    <Compile Include="dbClases\typConfiguracionesRegionales.vb" />
+    <Compile Include="dbClases\typConfiguracionesRegionalesReglas.vb" />
+    <Compile Include="dbClases\typCuentasAsientos.vb" />
+    <Compile Include="dbClases\typDepartamentos.vb" />
+    <Compile Include="dbClases\typDepartamentosPuestos.vb" />
+    <Compile Include="dbClases\typDiagnosticos.vb" />
+    <Compile Include="dbClases\typDistancias.vb" />
+    <Compile Include="dbClases\typDocumentacionVehiculos.vb" />
+    <Compile Include="dbClases\typEmpresasLegales.vb" />
+    <Compile Include="dbClases\typEmpresasLegalesCMS.vb" />
+    <Compile Include="dbClases\typEmpresasLegalesImpuestos.vb" />
+    <Compile Include="dbClases\typEncuestas.vb" />
+    <Compile Include="dbClases\typEncuestasIncidentes.vb" />
+    <Compile Include="dbClases\typEncuestasIncidentesItems.vb" />
+    <Compile Include="dbClases\typEncuestasItems.vb" />
+    <Compile Include="dbClases\typEncuestasRespuestas.vb" />
+    <Compile Include="dbClases\typEquipamientos.vb" />
+    <Compile Include="dbClases\typEspecialidadesMedicas.vb" />
+    <Compile Include="dbClases\typEstadosCivil.vb" />
+    <Compile Include="dbClases\typEstadosTurnos.vb" />
+    <Compile Include="dbClases\typFeriados.vb" />
+    <Compile Include="dbClases\typFormasPago.vb" />
+    <Compile Include="dbClases\typFormulariosControles.vb" />
+    <Compile Include="dbClases\typGoogleMapsImagenes.vb" />
+    <Compile Include="dbClases\typGpsHistorico.vb" />
+    <Compile Include="dbClases\typGradosAgrupaciones.vb" />
+    <Compile Include="dbClases\typGradosOperativos.vb" />
+    <Compile Include="dbClases\typGradosOperativosConfig.vb" />
+    <Compile Include="dbClases\typGrillaOperativa.vb" />
+    <Compile Include="dbClases\typGrillaOperativaTripulantes.vb" />
+    <Compile Include="dbClases\typImagenDocRenglones.vb" />
+    <Compile Include="dbClases\typImagenDocumentos.vb" />
+    <Compile Include="dbClases\typImpuestos.vb" />
+    <Compile Include="dbClases\typImpuestosImportaciones.vb" />
+    <Compile Include="dbClases\typIncidentes.vb" />
+    <Compile Include="dbClases\typIncidentesAdjuntos.vb" />
+    <Compile Include="dbClases\typIncidentesAtributos.vb" />
+    <Compile Include="dbClases\typIncidentesDomicilios.vb" />
+    <Compile Include="dbClases\typIncidentesLlamados.vb" />
+    <Compile Include="dbClases\typIncidentesObservaciones.vb" />
+    <Compile Include="dbClases\typIncidentesOtrosConceptos.vb" />
+    <Compile Include="dbClases\typIncidentesPersonal.vb" />
+    <Compile Include="dbClases\typIncidentesPracticas.vb" />
+    <Compile Include="dbClases\typIncidentesPracticasDetalle.vb" />
+    <Compile Include="dbClases\typIncidentesProgramaciones.vb" />
+    <Compile Include="dbClases\typIncidentesSintomas.vb" />
+    <Compile Include="dbClases\typIncidentesSintomasPregs.vb" />
+    <Compile Include="dbClases\typIncidentesSucesos.vb" />
+    <Compile Include="dbClases\typIncidentesViajes.vb" />
+    <Compile Include="dbClases\typIncidentesViajesMensajes.vb" />
+    <Compile Include="dbClases\typInfoPacienteGrupos.vb" />
+    <Compile Include="dbClases\typInfoPacienteItems.vb" />
+    <Compile Include="dbClases\typInsumos.vb" />
+    <Compile Include="dbClases\typInsumosMovimientos.vb" />
+    <Compile Include="dbClases\typInsumosMovimientosDetalle.vb" />
+    <Compile Include="dbClases\typInsumosStock.vb" />
+    <Compile Include="dbClases\typIntegrante.vb" />
+    <Compile Include="dbClases\typIntegranteAtributo.vb" />
+    <Compile Include="dbClases\typIntegranteInfoPaciente.vb" />
+    <Compile Include="dbClases\typIntegrantesClasificaciones.vb" />
+    <Compile Include="dbClases\typIntegrantesCursos.vb" />
+    <Compile Include="dbClases\typlckIncidentes.vb" />
+    <Compile Include="dbClases\typlckJobs.vb" />
+    <Compile Include="dbClases\typlckTraslados.vb" />
+    <Compile Include="dbClases\typLiquidacionesPrestadores.vb" />
+    <Compile Include="dbClases\typLocalidades.vb" />
+    <Compile Include="dbClases\typMarcasEquipamiento.vb" />
+    <Compile Include="dbClases\typMarcasModelos.vb" />
+    <Compile Include="dbClases\typMediosPagoIntegraciones.vb" />
+    <Compile Include="dbClases\typMediosPagoIntegracionesAtr.vb" />
+    <Compile Include="dbClases\typMetodosMensajeria.vb" />
+    <Compile Include="dbClases\typMotivosBajas.vb" />
+    <Compile Include="dbClases\typMotivosCondicionales.vb" />
+    <Compile Include="dbClases\typMotivosNoRealizacion.vb" />
+    <Compile Include="dbClases\typMoviles.vb" />
+    <Compile Include="dbClases\typMovilesActuales.vb" />
+    <Compile Include="dbClases\typMovilesHistorias.vb" />
+    <Compile Include="dbClases\typMovilesLocalidades.vb" />
+    <Compile Include="dbClases\typMovilesLocalidadesPrioridades.vb" />
+    <Compile Include="dbClases\typMovilesMensajeria.vb" />
+    <Compile Include="dbClases\typMovilesPoligonos.vb" />
+    <Compile Include="dbClases\typMovilesSucesos.vb" />
+    <Compile Include="dbClases\typNacionalidades.vb" />
+    <Compile Include="dbClases\typNomenclador.vb" />
+    <Compile Include="dbClases\typNomencladorUnidades.vb" />
+    <Compile Include="dbClases\typPaises.vb" />
+    <Compile Include="dbClases\typPamiEmulacion.vb" />
+    <Compile Include="dbClases\typPartidos.vb" />
+    <Compile Include="dbClases\typPerfiles.vb" />
+    <Compile Include="dbClases\typPerfilesGradosOperativos.vb" />
+    <Compile Include="dbClases\typPerfilesNodos.vb" />
+    <Compile Include="dbClases\typPerfilesTiposMoviles.vb" />
+    <Compile Include="dbClases\typPerfilesZonasGeograficas.vb" />
+    <Compile Include="dbClases\typPeriodosLiquidaciones.vb" />
+    <Compile Include="dbClases\typPersonal.vb" />
+    <Compile Include="dbClases\typPersonalEspecialidades.vb" />
+    <Compile Include="dbClases\typPersonalHorariosAtencion.vb" />
+    <Compile Include="dbClases\typPersonalMatriculas.vb" />
+    <Compile Include="dbClases\typPersonalPactados.vb" />
+    <Compile Include="dbClases\typPersonalPracticas.vb" />
+    <Compile Include="dbClases\typPlanes.vb" />
+    <Compile Include="dbClases\typPlanesBonificaciones.vb" />
+    <Compile Include="dbClases\typPlanesFamilias.vb" />
+    <Compile Include="dbClases\typPlanesGradosOperativos.vb" />
+    <Compile Include="dbClases\typPlanesModulos.vb" />
+    <Compile Include="dbClases\typPlanesModulosConceptos.vb" />
+    <Compile Include="dbClases\typPlanesTarifasIntegrantes.vb" />
+    <Compile Include="dbClases\typPlanesTarifasIntegrantesRangos.vb" />
+    <Compile Include="dbClases\typPoligonos.vb" />
+    <Compile Include="dbClases\typPoligonosCoordenadas.vb" />
+    <Compile Include="dbClases\typPracticas.vb" />
+    <Compile Include="dbClases\typPracticasAgrupaciones.vb" />
+    <Compile Include="dbClases\typPracticasNomenclador.vb" />
+    <Compile Include="dbClases\typPreIncidentes.vb" />
+    <Compile Include="dbClases\typPrestadores.vb" />
+    <Compile Include="dbClases\typPrestadoresClientes.vb" />
+    <Compile Include="dbClases\typPrestadoresContactos.vb" />
+    <Compile Include="dbClases\typPrestadoresTarifas.vb" />
+    <Compile Include="dbClases\typProveedores.vb" />
+    <Compile Include="dbClases\typProvincias.vb" />
+    <Compile Include="dbClases\typReporteadores.vb" />
+    <Compile Include="dbClases\typReporteadoresFields.vb" />
+    <Compile Include="dbClases\typReporteadoresJoins.vb" />
+    <Compile Include="dbClases\typRubrosClientes.vb" />
+    <Compile Include="dbClases\typSanatorios.vb" />
+    <Compile Include="dbClases\typSanatoriosContactos.vb" />
+    <Compile Include="dbClases\typSectoresArreglosVehiculos.vb" />
+    <Compile Include="dbClases\typselIncidentes.vb" />
+    <Compile Include="dbClases\typselVentasDocCupones.vb" />
+    <Compile Include="dbClases\typselVentasDocumentos.vb" />
+    <Compile Include="dbClases\typServicesVehiculos.vb" />
+    <Compile Include="dbClases\typSintomas.vb" />
+    <Compile Include="dbClases\typSintomasPreguntas.vb" />
+    <Compile Include="dbClases\typSituacionesIva.vb" />
+    <Compile Include="dbClases\typSucesosIncidentes.vb" />
+    <Compile Include="dbClases\typsysNodos.vb" />
+    <Compile Include="dbClases\typTalonarios.vb" />
+    <Compile Include="dbClases\typTalonariosDocumentos.vb" />
+    <Compile Include="dbClases\typTarifas.vb" />
+    <Compile Include="dbClases\typTarifasPracticas.vb" />
+    <Compile Include="dbClases\typTarifasPracticasDetalle.vb" />
+    <Compile Include="dbClases\typTarifasPrestaciones.vb" />
+    <Compile Include="dbClases\typTarifasVigencias.vb" />
+    <Compile Include="dbClases\typTarjetasCredito.vb" />
+    <Compile Include="dbClases\typTemplates.vb" />
+    <Compile Include="dbClases\typTemplatesFields.vb" />
+    <Compile Include="dbClases\typTemplatesFiltros.vb" />
+    <Compile Include="dbClases\typTerminales.vb" />
+    <Compile Include="dbClases\typTiposBarcos.vb" />
+    <Compile Include="dbClases\typTiposComprobantes.vb" />
+    <Compile Include="dbClases\typTiposCuentas.vb" />
+    <Compile Include="dbClases\typTiposDocumentos.vb" />
+    <Compile Include="dbClases\typTiposEquipamiento.vb" />
+    <Compile Include="dbClases\typTiposGastos.vb" />
+    <Compile Include="dbClases\typTiposInsumos.vb" />
+    <Compile Include="dbClases\typTiposMatriculas.vb" />
+    <Compile Include="dbClases\typTiposMoviles.vb" />
+    <Compile Include="dbClases\typTiposMovilesGrados.vb" />
+    <Compile Include="dbClases\typTiposMovimientosInsumos.vb" />
+    <Compile Include="dbClases\typTiposOtrosIngresos.vb" />
+    <Compile Include="dbClases\typtmpClientesIntegrantes.vb" />
+    <Compile Include="dbClases\typtmpClientesIntegrantesAtributos.vb" />
+    <Compile Include="dbClases\typtmpClientesIntegrantesInfoPaciente.vb" />
+    <Compile Include="dbClases\typtmpIncidentesSintomas.vb" />
+    <Compile Include="dbClases\typtmpIncidentesSintomasPregs.vb" />
+    <Compile Include="dbClases\typtmpLogFacturacion.vb" />
+    <Compile Include="dbClases\typTurnos.vb" />
+    <Compile Include="dbClases\typTurnosEstados.vb" />
+    <Compile Include="dbClases\typTurnosExcepciones.vb" />
+    <Compile Include="dbClases\typTurnosNomenclador.vb" />
+    <Compile Include="dbClases\typUnidadesArancelarias.vb" />
+    <Compile Include="dbClases\typUnidadesArancelariasVigencias.vb" />
+    <Compile Include="dbClases\typUsuarios.vb" />
+    <Compile Include="dbClases\typUsuariosAgentes.vb" />
+    <Compile Include="dbClases\typUsuariosLogueados.vb" />
+    <Compile Include="dbClases\typUsuariosMailing.vb" />
+    <Compile Include="dbClases\typUsuariosNodos.vb" />
+    <Compile Include="dbClases\typUsuariosPerfiles.vb" />
+    <Compile Include="dbClases\typUsuariosPreferencias.vb" />
+    <Compile Include="dbClases\typUsuariosRelaciones.vb" />
+    <Compile Include="dbClases\typVehiculos.vb" />
+    <Compile Include="dbClases\typVehiculosControles.vb" />
+    <Compile Include="dbClases\typVehiculosControlesServices.vb" />
+    <Compile Include="dbClases\typVehiculosDocumentacion.vb" />
+    <Compile Include="dbClases\typVentasDocCobros.vb" />
+    <Compile Include="dbClases\typVentasDocImputaciones.vb" />
+    <Compile Include="dbClases\typVentasDocIncidentes.vb" />
+    <Compile Include="dbClases\typVentasDocMarcas.vb" />
+    <Compile Include="dbClases\typVentasDocRenglones.vb" />
+    <Compile Include="dbClases\typVentasDocumentos.vb" />
+    <Compile Include="dbClases\typVentasDocVencimientos.vb" />
+    <Compile Include="dbClases\typZonasGeograficas.vb" />
+    <Compile Include="dbGlobal\conAllGenerico00.vb" />
+    <Compile Include="dbGlobal\conAllGenerico01.vb" />
+    <Compile Include="dbGlobal\typAll.vb" />
+    <Compile Include="dbGlobal\typAllGenerico00.vb" />
+    <Compile Include="dbGlobal\typAllGenerico01.vb" />
+    <Compile Include="dbGlobal\typGenericoContacto.vb" />
+    <Compile Include="dbGlobal\typGenericoMovil.vb" />
+    <Compile Include="dbUser\usrContacto.vb" />
+    <Compile Include="dbUser\usrDERDomicilio.vb" />
+    <Compile Include="dbUser\usrDomicilio.vb" />
+    <Compile Include="dbUser\usrHorarioOperativo.vb" />
+    <Compile Include="Modules\modConvert.vb" />
+    <Compile Include="Modules\modDatabase.vb" />
+    <Compile Include="Modules\modDeclares.vb" />
+    <Compile Include="Modules\modErrors.vb" />
+    <Compile Include="Modules\modFechas.vb" />
+    <Compile Include="Modules\modFuncionesGenerales.vb" />
+    <Compile Include="Modules\modGPShaman.vb" />
+    <Compile Include="Modules\modHtml.vb" />
+    <Compile Include="Modules\modNumeros.vb" />
+    <Compile Include="Modules\modSeguridadWS.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\GPShamanWS\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\GPShamanWS\Service.wsdl">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GPShamanWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GPShamanWS\configuration.svcinfo" />
+    <None Include="Service References\GPShamanWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GPShamanWS\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
