@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using Newtonsoft.Json.Serialization;
+using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace Emerger
@@ -10,6 +11,9 @@ namespace Emerger
 			// Web API configuration and services
 			var cors = new EnableCorsAttribute("*", "*", "*");
 			config.EnableCors(cors);
+			config.Filters.Add(new AuthorizeAttribute());
+			config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
 			// Web API routes
 			config.MapHttpAttributeRoutes();
 

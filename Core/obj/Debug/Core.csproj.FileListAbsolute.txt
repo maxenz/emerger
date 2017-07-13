@@ -1,8 +1,0 @@
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\bin\Debug\Core.dll
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\bin\Debug\Core.pdb
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\bin\Debug\ShamanExpressDLL.dll
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\bin\Debug\ShamanExpressDLL.pdb
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\bin\Debug\ShamanExpressDLL.xml
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\obj\Debug\Core.dll
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Core\obj\Debug\Core.pdb

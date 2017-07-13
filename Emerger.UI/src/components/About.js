@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import {login, isLoggedIn} from './../utils/AuthService';
+import Unauthorized from './Unauthorized/Unauthorized';
+import Nav from './Nav';
+import withAuth from  '../utils/withAuth';
 
 class About extends Component {
 
-  render() {
-
-    return (
-        <div>
-            { isLoggedIn() ? <h3>Logueado perrito</h3> : <h1>SIN ACCESO</h1>}
-        </div>
-    );
-  }
+   render() {
+     const user = this.props.auth.getProfile();
+     console.log(user);
+     return (
+       <div>
+          <Nav />
+          <div>Current user: {user.email}</div>
+       </div>
+     )
+   }
 }
 
-export default About;
+export default withAuth(About) 

@@ -1,27 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
-import {Route, BrowserRouter} from 'react-router-dom';
+import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import About from './components/About';
 import Login from './components/Login';
-import Nav from './components/Nav';
+import NotFound from './components/NotFound/NotFound';
+import Unauthorized from './components/Unauthorized/Unauthorized';
+import 'bootstrap/dist/css/bootstrap.css';
+import './fonts/css/font-awesome.css';
+import './index.css';
 
 
 const Root = () => {
   return (
-
-      <BrowserRouter>
+    <Router>
         <div>
-            <Nav/>
-            <Route exact path="/" component={Login}/>
-            <Route path="/login" component={Login}/>
-            <div className="container">
-                <Route path="/about" component={About}/>
-            </div>
+            <Switch>
+                <Route exact path="/" component={Login}/>
+                <Route exact path="/about" component={About}/>
+                <Route exact path="/unauthorized" component={Unauthorized}/>
+                <Route component={NotFound} />
+            </Switch>
         </div>
-      </BrowserRouter>
+    </Router>
 
   )
 }

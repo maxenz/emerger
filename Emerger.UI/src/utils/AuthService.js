@@ -1,70 +1,79 @@
-import {login as apiLogin} from './Api'
+import { BrowserRouter as Router } from 'react-router-dom';
 
-export function login(username, password) {
-    return apiLogin(username, password);
-}
+const BASE_URL = 'http://localhost/Emerger.WebAPI';
+const TOKEN_KEY = 'emerger_token';
+const PROFILE_KEY = 'profile';
 
-export function logout() {
-  this.props.history.push('/');
-}
+export default class AuthService {
 
-export function requireAuth(nextState, replace) {
-  if (!isLoggedIn()) {
-    replace({pathname: '/'});
+  login(username, password) {
+      return this.fetch(`${BASE_URL}/api/authentication/login/${username}/${password}`, {
+        method: 'POST'
+      })
+      .then(res => {
+        console.log(res);
+          this.setJwtToken(res.token);
+          this.setProfile(res.profile);
+      });
   }
+
+  loggedIn() {
+    const idToken = this.getJwtToken();
+    return !!idToken;
+  }
+
+  logout() {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(PROFILE_KEY);
+  }
+
+  getJwtToken() {
+    return localStorage.getItem(TOKEN_KEY);
+  }
+
+  setJwtToken(token) {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+
+  setProfile(profile) {
+    const jsonProfile = JSON.stringify(profile);
+    localStorage.setItem(PROFILE_KEY, jsonProfile);
+  }
+
+  getProfile(){
+    // Retrieves the profile data from localStorage
+    const profile = localStorage.getItem(PROFILE_KEY);
+    return profile ? JSON.parse(localStorage.profile) : {};
+  }
+
+  _checkStatus(response) {
+    // raises an error in case response status is not a success
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    } else {
+      var error = new Error(response.statusText);
+      error.response = response;
+      throw error;
+    }
+  }
+
+  fetch(url, options){
+      // performs api calls sending the required authentication headers
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+
+      if (this.loggedIn()){
+        headers['Authorization'] = 'Bearer ' + this.getToken();
+      }
+
+      return fetch(url, {
+        headers,
+        ...options
+      })
+      .then(this._checkStatus)
+      .then(response => response.json())
+  }
+
 }
-
-// export function getIdToken() {
-//   return localStorage.getItem(ID_TOKEN_KEY);
-// }
-
-// export function getAccessToken() {
-//   return localStorage.getItem(ACCESS_TOKEN_KEY);
-// }
-
-// function clearIdToken() {
-//   localStorage.removeItem(ID_TOKEN_KEY);
-// }
-
-// function clearAccessToken() {
-//   localStorage.removeItem(ACCESS_TOKEN_KEY);
-// }
-
-// Helper function that will allow us to extract the access_token and id_token
-// function getParameterByName(name) {
-//   let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
-//   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-// }
-
-// // Get and store access_token in local storage
-// export function setAccessToken() {
-//   let accessToken = getParameterByName('access_token');
-//   localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
-// }
-
-// // Get and store id_token in local storage
-// export function setIdToken() {
-//   let idToken = getParameterByName('id_token');
-//   localStorage.setItem(ID_TOKEN_KEY, idToken);
-// }
-
-export function isLoggedIn() {
-    return false;
-//   const idToken = getIdToken();
-//   return !!idToken && !isTokenExpired(idToken);
-}
-
-// function getTokenExpirationDate(encodedToken) {
-//   const token = decode(encodedToken);
-//   if (!token.exp) { return null; }
-
-//   const date = new Date(0);
-//   date.setUTCSeconds(token.exp);
-
-//   return date;
-// }
-
-// function isTokenExpired(token) {
-//   const expirationDate = getTokenExpirationDate(token);
-//   return expirationDate < new Date();
-// }

@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\Emerger.Core\Emerger.Core.csproj">
       <Project>{DC02ABF6-6AC1-4D5C-A876-E9FF33EC44A0}</Project>
-      <Name>Core</Name>
+      <Name>Emerger.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShamanExpressDLL\ShamanExpressDLL.vbproj">
       <Project>{1a8dfae4-4e6f-4ad5-9b09-cfa395aa2065}</Project>
