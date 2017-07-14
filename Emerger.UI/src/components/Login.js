@@ -14,12 +14,13 @@ class Login extends Component {
 
     state = { 
         userName: '',
-        userPassword: ''
+        userPassword: '',
+        errorMessage: null
     };
 
     componentDidMount() {
         if (auth.loggedIn()) {
-            this.props.history.push('/about');
+            this.props.history.push('/prestaciones');
         }
     }
 
@@ -27,16 +28,21 @@ class Login extends Component {
         event.preventDefault();
         auth.login(this.state.userName, this.state.userPassword)
         .then(res => {
-            console.log(res);
-            this.props.history.push('/about');
+            this.props.history.push('/prestaciones');
         })
-        .catch(e => console.log(e));
+        .catch(e => {
+            if (e.response.status === 401) {
+                this.setState({errorMessage: "Los datos ingresados son incorrectos"});
+            } else {
+                this.setState({errorMessage: "Contáctese con el administrador."});
+            }
+        });
     }
 
     render() {
         return (
             <div>
-                <Nav/>
+                <Nav properties={this.props}/>
                 <div className="outer">
                     <div className="middle">
                         <div className="inner">                   
@@ -57,6 +63,13 @@ class Login extends Component {
                                         placeholder="Contraseña"
                                         required
                                     />
+                                    {
+                                        this.state.errorMessage ? 
+                                        <div className="alert alert-danger" role="alert">
+                                            <strong>Error! </strong> {this.state.errorMessage}
+                                        </div> : null
+
+                                    }
                                     <button type="submit">Ingresar</button>
                                 </form>
                             </div>

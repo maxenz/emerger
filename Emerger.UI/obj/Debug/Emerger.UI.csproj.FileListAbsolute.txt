@@ -18,6 +18,6 @@ C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\bin\Newtonsoft.Json.d
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\bin\System.Web.Cors.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\bin\Newtonsoft.Json.xml
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\obj\Debug\Emerger.UI.csprojResolveAssemblyReference.cache
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\obj\Debug\Emerger.UI.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\obj\Debug\Emerger.UI.pdb
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.UI\obj\Debug\Emerger.UI.csprojResolveAssemblyReference.cache

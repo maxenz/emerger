@@ -7,10 +7,9 @@ class About extends Component {
 
    render() {
      const user = this.props.auth.getProfile();
-     console.log(user);
      return (
        <div>
-          <Nav />
+          <Nav properties={this.props} />
           <div>Current user: {user.email}</div>
        </div>
      )

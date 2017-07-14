@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Emerger",
+  "name": "Emerger - Extranet de Prestadores",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "192x192",
+      "sizes": "36x36",
       "type": "image/png"
     }
   ],

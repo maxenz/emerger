@@ -45,8 +45,8 @@ namespace Emerger.WebAPI.Controllers
 							Token = JwtManager.GenerateToken(username),
 							Profile = new
 							{
-								Name = "Maximiliano Poggio",
-								Email = "maximilianopoggio@gmail.com"
+								Name = "Javier Nigrelli",
+								Email = "jnigrelli@paramedic.com.ar"
 							}
 						});
 				}

@@ -6,10 +6,11 @@ import About from './components/About';
 import Login from './components/Login';
 import NotFound from './components/NotFound/NotFound';
 import Unauthorized from './components/Unauthorized/Unauthorized';
+import PrestacionesContainer from './containers/PrestacionesContainer';
+import ResumenContainer from './containers/ResumenContainer';
+import FaltantesContainer from './containers/FaltantesContainer';
 import 'bootstrap/dist/css/bootstrap.css';
 import './fonts/css/font-awesome.css';
-import './index.css';
-
 
 const Root = () => {
   return (
@@ -17,7 +18,9 @@ const Root = () => {
         <div>
             <Switch>
                 <Route exact path="/" component={Login}/>
-                <Route exact path="/about" component={About}/>
+                <Route exact path="/prestaciones" component={PrestacionesContainer}/>
+                <Route exact path="/faltantes" component={FaltantesContainer}/>
+                <Route exact path="/resumen" component={ResumenContainer}/>
                 <Route exact path="/unauthorized" component={Unauthorized}/>
                 <Route component={NotFound} />
             </Switch>
