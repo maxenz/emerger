@@ -13,5 +13,6 @@ namespace Emerger.Services
 		{
 			return DatabaseConnection.GetInstance().Connect();
 		}
+
 	}
 }

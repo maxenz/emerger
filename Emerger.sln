@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emerger.WebAPI", "Emerger.WebAPI\Emerger.WebAPI.csproj", "{A68C479E-DFF8-41D0-9AFB-AAE33D7DC7C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emerger.UI", "Emerger.UI\Emerger.UI.csproj", "{85F6A9BA-54B9-4C99-A8DA-80D538BE0708}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emerger.Services", "Emerger.Services\Emerger.Services.csproj", "{6F90BF12-2D9C-41BD-BEC4-036392F7E5C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emerger.DomainModel", "Emerger.DomainModel\Emerger.DomainModel.csproj", "{2EAA1B1C-51FC-4DA7-8240-77D69D0083CD}"
@@ -25,10 +23,6 @@ Global
 		{A68C479E-DFF8-41D0-9AFB-AAE33D7DC7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A68C479E-DFF8-41D0-9AFB-AAE33D7DC7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A68C479E-DFF8-41D0-9AFB-AAE33D7DC7C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85F6A9BA-54B9-4C99-A8DA-80D538BE0708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85F6A9BA-54B9-4C99-A8DA-80D538BE0708}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85F6A9BA-54B9-4C99-A8DA-80D538BE0708}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85F6A9BA-54B9-4C99-A8DA-80D538BE0708}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F90BF12-2D9C-41BD-BEC4-036392F7E5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F90BF12-2D9C-41BD-BEC4-036392F7E5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F90BF12-2D9C-41BD-BEC4-036392F7E5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU

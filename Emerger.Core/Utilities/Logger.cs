@@ -10,25 +10,6 @@ namespace Emerger.Core.Utilities
 	public static class Logger
 	{
 		/// <summary>
-		/// Gets or sets the enabled status of the logger.
-		/// </summary>
-		public static bool Enabled
-		{
-			get { return LogManager.IsLoggingEnabled(); }
-			set
-			{
-				if (value)
-				{
-					while (!Enabled) LogManager.EnableLogging();
-				}
-				else
-				{
-					while (Enabled) LogManager.DisableLogging();
-				}
-			}
-		}
-
-		/// <summary>
 		/// Writes the diagnostic message at the Trace level.
 		/// </summary>
 		/// <param name="message"></param>
@@ -137,9 +118,6 @@ namespace Emerger.Core.Utilities
 		{
 			// get the source-file-specific logger
 			var logger = LogManager.GetLogger(callerPath);
-
-			// quit processing any further if not enabled for the requested logging level
-			if (!logger.IsEnabled(level)) return;
 
 			// log the event with caller information bound to it
 			var logEvent = new LogEventInfo(level, callerPath, message) { Exception = exception };

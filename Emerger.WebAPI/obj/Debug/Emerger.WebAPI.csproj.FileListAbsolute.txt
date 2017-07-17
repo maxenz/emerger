@@ -1,3 +1,4 @@
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\NLog.config
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\roslyn\csc.exe
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -15,6 +16,7 @@ C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Antlr3.Runtime.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.Core.dll
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.DomainModel.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.Services.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Microsoft.IdentityModel.Logging.dll
@@ -38,6 +40,7 @@ C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\System.Web.We
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\WebGrease.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\ShamanExpressDLL.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.Core.pdb
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.DomainModel.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Emerger.Services.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Antlr3.Runtime.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml

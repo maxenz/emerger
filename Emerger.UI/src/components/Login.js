@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import logo from '../images/logo_emerger.png';
 import Nav from './Nav';
 import AuthService from '../utils/AuthService';
-import './../App.css';
+import axios from 'axios';
 
 const auth = new AuthService();
 
 class Login extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     state = { 
         userName: '',

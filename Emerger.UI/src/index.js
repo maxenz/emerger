@@ -2,15 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
-import About from './components/About';
 import Login from './components/Login';
 import NotFound from './components/NotFound/NotFound';
 import Unauthorized from './components/Unauthorized/Unauthorized';
 import PrestacionesContainer from './containers/PrestacionesContainer';
 import ResumenContainer from './containers/ResumenContainer';
 import FaltantesContainer from './containers/FaltantesContainer';
+import AuthService from './utils/AuthService';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-select/dist/react-select.css';
 import './fonts/css/font-awesome.css';
+import './App.css';
+import axios from 'axios';
+
+const auth = new AuthService();
+axios.defaults.baseURL = 'http://localhost/Emerger.WebAPI/api';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + auth.getJwtToken();
 
 const Root = () => {
   return (

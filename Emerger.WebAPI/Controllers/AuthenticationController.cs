@@ -1,4 +1,5 @@
-﻿using Emerger.Services;
+﻿using Emerger.Core.Utilities;
+using Emerger.Services;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -37,6 +38,7 @@ namespace Emerger.WebAPI.Controllers
 				bool isLogged = _AuthenticationService.Login(username, password);
 				if (isLogged)
 				{
+					Logger.Info(string.Format("El usuario {0} fue logueado correctamente", username));
 					return Request.CreateResponse(
 						HttpStatusCode.OK,
 						new
@@ -64,22 +66,11 @@ namespace Emerger.WebAPI.Controllers
 			}
 			catch (Exception ex)
 			{
+				Logger.Error("No se pudo autenticar el usuario", ex);
 				return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
 			}
 		}
 
-		[HttpPost]
-		[Route("api/authentication/logout/username")]
-		[JwtAuthentication]
-		public HttpResponseMessage Logout(string username)
-		{
-			return Request.CreateResponse(
-						   HttpStatusCode.OK,
-						   new
-						   {
-							   LoggedOut = true
-						   });
-		}
 		#endregion
 	}
 }

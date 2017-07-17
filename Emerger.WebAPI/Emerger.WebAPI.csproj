@@ -150,6 +150,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Filters\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="Filters\AuthenticationFailureResult.cs" />
     <Compile Include="Filters\HttpAuthenticationChallengeContextExtensions.cs" />
@@ -178,6 +179,10 @@
     <ProjectReference Include="..\Emerger.Core\Emerger.Core.csproj">
       <Project>{DC02ABF6-6AC1-4D5C-A876-E9FF33EC44A0}</Project>
       <Name>Emerger.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emerger.DomainModel\Emerger.DomainModel.csproj">
+      <Project>{2EAA1B1C-51FC-4DA7-8240-77D69D0083CD}</Project>
+      <Name>Emerger.DomainModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Emerger.Services\Emerger.Services.csproj">
       <Project>{6F90BF12-2D9C-41BD-BEC4-036392F7E5C7}</Project>

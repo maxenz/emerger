@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import axios from 'axios';
 
 const BASE_URL = 'http://localhost/Emerger.WebAPI';
 const TOKEN_KEY = 'emerger_token';
@@ -11,9 +11,9 @@ export default class AuthService {
         method: 'POST'
       })
       .then(res => {
-        console.log(res);
           this.setJwtToken(res.token);
           this.setProfile(res.profile);
+          axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.getJwtToken();
       });
   }
 

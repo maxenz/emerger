@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import AuthService from '../utils/AuthService';
 import {Link} from 'react-router-dom';
-import '../App.css';
 
 const auth = new AuthService();
 

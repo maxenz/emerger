@@ -177,3 +177,23 @@ div.navbar-container {
 .not-visible {
   display:none;
 }
+
+/* Botones */
+
+.btn-outline-success {
+  color: #2ecc71;
+  background-image:none;
+  background-color:transparent;
+  border-color:#2ecc71;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+/* Filtros */
+.Select-control {
+  height:38px;
+}

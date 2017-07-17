@@ -42,12 +42,17 @@
   <ItemGroup>
     <Compile Include="AuthenticationService.cs" />
     <Compile Include="DatabaseConnectionService.cs" />
+    <Compile Include="FiltersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Emerger.Core\Emerger.Core.csproj">
       <Project>{DC02ABF6-6AC1-4D5C-A876-E9FF33EC44A0}</Project>
       <Name>Emerger.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emerger.DomainModel\Emerger.DomainModel.csproj">
+      <Project>{2EAA1B1C-51FC-4DA7-8240-77D69D0083CD}</Project>
+      <Name>Emerger.DomainModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShamanExpressDLL\ShamanExpressDLL.vbproj">
       <Project>{1a8dfae4-4e6f-4ad5-9b09-cfa395aa2065}</Project>

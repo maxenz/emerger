@@ -1,4 +1,5 @@
-﻿using ShamanExpressDLL;
+﻿using Emerger.Core.Utilities;
+using ShamanExpressDLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,11 @@ namespace Emerger.Services
 		{
 			var conUsers = new conUsuarios();
 			bool change = false;
-			return conUsers.Autenticar(username, password, ref change) > 0;
+			Logger.Info(string.Format("Se intentará loguear el usuario {0}", username));
+			long result = conUsers.Autenticar(username, password, ref change);
+			Logger.Info(string.Format("El resultado del intento de login fue: {0}", result.ToString()));
+
+			return result > 0;
 		}
 
 		#endregion
