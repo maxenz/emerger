@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApi.Jwt.Filters;
+using System.Linq;
 
 namespace Emerger.Controllers
 {
@@ -36,7 +37,8 @@ namespace Emerger.Controllers
 		{
 			try
 			{
-				List<Filter> companies = _FiltersService.GetCompanies();
+				int user = Convert.ToInt32(Request.Headers.GetValues("User").FirstOrDefault());
+				List<Filter> companies = _FiltersService.GetCompanies(user);
 
 				return Request.CreateResponse(
 					HttpStatusCode.OK,

@@ -65,5 +65,42 @@ Public Class conConceptosFacturacion
 
     End Function
 
+    Public Function GetSubConceptoId(ByVal pSub As String) As Int64
+        GetSubConceptoId = 0
+
+        Try
+            Dim SQL As String
+            SQL = "SELECT ID FROM ConceptosFacturacion WHERE (Clasificacion = 5) AND (AbreviaturaId = '" & pSub & "') "
+            Dim cmFind As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
+            Dim vOutVal As String = CType(cmFind.ExecuteScalar, String)
+            If Not vOutVal Is Nothing Then
+                GetSubConceptoId = CType(vOutVal, Int64)
+            Else
+                Dim objConcepto As New typConceptosFacturacion
+                objConcepto.CleanProperties(objConcepto)
+
+                objConcepto.AbreviaturaId = pSub
+                Select Case pSub
+                    Case "BAS" : objConcepto.Descripcion = "VALOR BASE"
+                    Case "KEX" : objConcepto.Descripcion = "KILOMETRO EXCEDENTE"
+                    Case "ESH" : objConcepto.Descripcion = "HORA DE ESPERA"
+                    Case "ESM" : objConcepto.Descripcion = "MEDIA HORA DE ESPERA"
+                    Case "NOC" : objConcepto.Descripcion = "RECARGO NOCTURNO"
+                    Case "PED" : objConcepto.Descripcion = "RECARGO PEDIATRICO"
+                    Case "DER" : objConcepto.Descripcion = "RECARGO DERIVACION"
+                    Case "DRT" : objConcepto.Descripcion = "DESCUENTO RETORNO"
+                End Select
+                objConcepto.Clasificacion = conClasificaciones.SubConceptos
+
+                If objConcepto.Salvar(objConcepto) Then
+                    GetSubConceptoId = objConcepto.ID
+                End If
+
+            End If
+
+        Catch ex As Exception
+            HandleError(Me.GetType.Name, "GetSubConceptoId", ex)
+        End Try
+    End Function
 
 End Class

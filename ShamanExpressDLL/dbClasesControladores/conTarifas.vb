@@ -29,6 +29,29 @@ Public Class conTarifas
         End Try
     End Function
 
+    Public Function GetList(Optional pLiq As Boolean = False) As DataTable
+
+        GetList = Nothing
+
+        Try
+            Dim SQL As String
+
+            SQL = "SELECT ID, AbreviaturaId + ' - ' + Descripcion FROM Tarifas "
+            SQL = SQL & "WHERE (flgLiquidacion = " & setBoolToInt(pLiq) & ") "
+            SQL = SQL & "AND (Activo = 1) "
+            SQL = SQL & "ORDER BY AbreviaturaId"
+
+            Dim cmdEqp As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
+            Dim dt As New DataTable
+            dt.Load(cmdEqp.ExecuteReader)
+
+            GetList = dt
+
+        Catch ex As Exception
+            HandleError(Me.GetType.Name, "GetList", ex)
+        End Try
+    End Function
+
     Public Function GetConceptoId(ByVal pTarVigId As Int64, ByVal pGdo As Int64) As Int64
         GetConceptoId = 0
         Try
@@ -72,11 +95,13 @@ Public Class conTarifas
         End Try
     End Function
 
-    Public Function Valorizar(ByVal pTarVigId As Int64, ByVal pCon As Long, ByVal pKmt As Long, Optional ByVal pNoc As Boolean = False, Optional ByVal pPed As Boolean = False, Optional ByVal pDer As Boolean = False, Optional ByVal pDem As Long = 0, Optional pVijAbr As String = "IDA") As Double
+    Public Function Valorizar(ByVal pTarVigId As Int64, ByVal pCon As Long, ByVal pKmt As Long, Optional ByVal pNoc As Boolean = False, Optional ByVal pPed As Boolean = False, Optional ByVal pDer As Boolean = False, Optional ByVal pDem As Long = 0, Optional pVijAbr As String = "IDA", Optional pLiqIncId As Int64 = 0) As Double
         Valorizar = 0
         Try
             Dim SQL As String, vId As Int64, objValores As New conTarifasPrestaciones(Me.myCnnName), vVal As Double = 0
+
             Valorizar = 0
+
             SQL = "SELECT ID FROM TarifasPrestaciones WHERE (TarifaVigenciaId = " & pTarVigId & ") AND (ConceptoFacturacionId = " & pCon & ") "
             SQL = SQL & "AND (KmDesde <= " & pKmt & ") AND (KmHasta >= " & pKmt & ") "
 
@@ -101,10 +126,13 @@ Public Class conTarifas
             vId = CType(vOutVal, Int64)
 
             If objValores.Abrir(vId) Then
+                '--------> Valor Base
                 vVal = objValores.Importe
+                addLogLiq(pLiqIncId, "BAS", 1, objValores.Importe)
                 '--------> Km Excedente
                 If pKmt > objValores.KmHasta Then
                     vVal = vVal + ((pKmt - objValores.KmHasta) * objValores.ImpKmExcedente)
+                    addLogLiq(pLiqIncId, "KEX", pKmt - objValores.KmHasta, objValores.ImpKmExcedente)
                 End If
                 '--------> Espera
                 Dim vHor As Integer = Int(pDem / 60), vMed As Integer = pDem - (vHor * 60), vFraMed As Boolean = False
@@ -114,19 +142,69 @@ Public Class conTarifas
                     vFraMed = True
                 End If
                 vVal = vVal + (objValores.ImpDemora * vHor)
-                If vFraMed Then vVal = vVal + (objValores.ImpDemora / 2)
+                addLogLiq(pLiqIncId, "ESH", vHor, objValores.ImpDemora)
+                If vFraMed Then
+                    vVal = vVal + (objValores.ImpDemora / 2)
+                    addLogLiq(pLiqIncId, "ESM", 1, objValores.ImpDemora / 2)
+                End If
                 '--------> Recargos
-                If pNoc Then vVal = vVal + ((objValores.Importe * objValores.RecNocturno) / 100)
-                If pPed Then vVal = vVal + ((objValores.Importe * objValores.RecPediatrico) / 100)
-                If pDer Then vVal = vVal + ((objValores.Importe * objValores.RecDerivacion) / 100)
+                If pNoc Then
+                    vVal = vVal + ((objValores.Importe * objValores.RecNocturno) / 100)
+                    addLogLiq(pLiqIncId, "NOC", 1, ((objValores.Importe * objValores.RecNocturno) / 100))
+                End If
+
+                If pPed Then
+                    vVal = vVal + ((objValores.Importe * objValores.RecPediatrico) / 100)
+                    addLogLiq(pLiqIncId, "PED", 1, ((objValores.Importe * objValores.RecPediatrico) / 100))
+                End If
+
+                If pDer Then
+                    vVal = vVal + ((objValores.Importe * objValores.RecDerivacion) / 100)
+                    addLogLiq(pLiqIncId, "DER", 1, ((objValores.Importe * objValores.RecDerivacion) / 100))
+                End If
+
                 '--------> Descuento retorno
-                If pVijAbr = "VUE" And objValores.ImpDtoRetorno > 0 Then vVal = vVal - objValores.ImpDtoRetorno
+                If pVijAbr = "VUE" And objValores.ImpDtoRetorno > 0 Then
+                    vVal = vVal - objValores.ImpDtoRetorno
+                    addLogLiq(pLiqIncId, "DRT", 1, objValores.ImpDtoRetorno)
+                End If
+
                 '-------> Resultado
                 Valorizar = Math.Round(vVal, 2)
             End If
             objValores = Nothing
         Catch ex As Exception
             HandleError(Me.GetType.Name, "Valorizar", ex)
+        End Try
+    End Function
+
+    Private Function addLogLiq(pLiqIncId As Int64, pSub As String, pCnt As Integer, pImp As Decimal) As Boolean
+
+        addLogLiq = False
+
+        Try
+
+            If pLiqIncId > 0 And pImp > 0 And pCnt > 0 Then
+
+                Dim objLog As New typLiqPrestadoresIncidentesConceptos
+                Dim objConcepto As New conConceptosFacturacion
+
+                objLog.CleanProperties(objLog)
+                objLog.LiqPrestadorIncidenteId.SetObjectId(pLiqIncId)
+                objLog.ConceptoFacturacionId.SetObjectId(objConcepto.GetSubConceptoId(pSub))
+                objLog.Cantidad = pCnt
+                objLog.Importe = pImp
+
+                If objLog.Salvar(objLog) Then
+
+                    addLogLiq = True
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+            HandleError(Me.GetType.Name, "addLogLiq", ex)
         End Try
     End Function
 

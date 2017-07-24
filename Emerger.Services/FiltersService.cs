@@ -1,6 +1,8 @@
 ﻿using Emerger.DomainModel;
+using ShamanExpressDLL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Emerger.Services
 {
@@ -8,22 +10,38 @@ namespace Emerger.Services
 	{
 		#region Public Methods
 
-		public List<Filter> GetCompanies()
+		public List<Filter> GetCompanies(int userId)
 		{
-			return new List<Filter>()
+			conUsuarios userData = new conUsuarios();
+			DataTable data = userData.GetPrestadoresByUsuario(userId);
+			List<Filter> filters = new List<Filter>();
+
+			foreach(DataRow row in data.Rows)
 			{
-				new Filter(1,"Telefónica"),
-				new Filter(2,"Telecom")
-			};
+				filters.Add(new Filter(Convert.ToInt32(row["Id"]), row["RazonSocial"].ToString()));
+			}
+
+			return filters;
 		}
 
 		public List<Filter> GetPeriods()
 		{
-			return new List<Filter>()
+			conPeriodosLiquidaciones liquidaciones = new conPeriodosLiquidaciones();
+			DataTable data = liquidaciones.GetAll(5);
+			List<Filter> filters = new List<Filter>();
+
+			foreach (DataRow row in data.Rows)
 			{
-				new PeriodFilter(1,"07/10", DateTime.Now, DateTime.Now.AddDays(10)),
-				new PeriodFilter(2,"08/10", DateTime.Now.AddDays(30), DateTime.Now.AddDays(40)),
-			};
+				filters.Add(
+					new PeriodFilter(
+						Convert.ToInt32(row["Id"]),
+						row["PeriodoStr"].ToString(),
+						Convert.ToDateTime(row["FecDesde"]),
+						Convert.ToDateTime(row["FecHasta"])
+					));
+			}
+
+			return filters;
 		}
 
 		public List<Filter> GetStates()

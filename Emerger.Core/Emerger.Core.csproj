@@ -49,11 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShamanExpressDLL\ShamanExpressDLL.vbproj">
-      <Project>{1A8DFAE4-4E6F-4AD5-9B09-CFA395AA2065}</Project>
+      <Project>{1a8dfae4-4e6f-4ad5-9b09-cfa395aa2065}</Project>
       <Name>ShamanExpressDLL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

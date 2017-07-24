@@ -1,3 +1,4 @@
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\obj\Debug\Emerger.Services.csprojResolveAssemblyReference.cache
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\NLog.config
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\Emerger.Services.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\Emerger.Services.pdb
@@ -9,6 +10,5 @@ C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\Emerg
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\Emerger.DomainModel.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\ShamanExpressDLL.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\bin\Debug\ShamanExpressDLL.xml
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\obj\Debug\Emerger.Services.csprojResolveAssemblyReference.cache
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\obj\Debug\Emerger.Services.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.Services\obj\Debug\Emerger.Services.pdb

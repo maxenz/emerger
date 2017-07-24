@@ -495,4 +495,32 @@ Public Class conUsuarios
         End Try
     End Function
 
+    Public Function GetPrestadoresByUsuario(pUsr As Int64) As DataTable
+
+        GetPrestadoresByUsuario = Nothing
+
+        Try
+            Dim SQL As String
+
+            SQL = "SELECT pre.ID, pre.RazonSocial "
+            SQL = SQL & "FROM UsuariosRelaciones rel "
+            SQL = SQL & "INNER JOIN Prestadores pre ON rel.PrestadorId = rel.ID "
+
+            SQL = SQL & "WHERE (rel.UsuarioId = " & pUsr & ") "
+            SQL = SQL & "AND (pre.Activo = 1) "
+
+            SQL = SQL & "ORDER BY pre.RazonSocial"
+
+            Dim cmdBus As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
+            Dim dt As New DataTable
+            dt.Load(cmdBus.ExecuteReader)
+
+            GetPrestadoresByUsuario = dt
+
+        Catch ex As Exception
+            HandleError(Me.GetType.Name, "GetPrestadoresByUsuario", ex)
+        End Try
+    End Function
+
+
 End Class

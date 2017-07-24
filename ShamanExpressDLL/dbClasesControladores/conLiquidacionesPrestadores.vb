@@ -28,17 +28,17 @@ Public Class conLiquidacionesPrestadores
 
             If objPeriodo.Abrir(pPerId) Then
 
-                SQL = "SELECT liq.ID, liq.PrestadorId, mov.ID AS MovilId, pre.AbreviaturaId, pre.RazonSocial, liq.Importe "
+                SQL = "SELECT liq.ID, liq.PrestadorId, mov.ID AS MovilId, pre.AbreviaturaId, pre.RazonSocial, liq.Importe, liq.flgCerrado, CONVERT(varchar, liq.regFechaHora, 103) + ' - ' + SUBSTRING(CONVERT(varchar, liq.regFechaHora, 114), 1, 5) AS regFechaHora, 'Ver' AS Ver "
                 SQL = SQL & "FROM LiquidacionesPrestadores liq "
-                SQL = SQL & "INNER JOIN Prestadores pre ON liq.PeriodoLiquidacionId = pre.ID "
+                SQL = SQL & "INNER JOIN Prestadores pre ON liq.PrestadorId = pre.ID "
                 SQL = SQL & "INNER JOIN Moviles mov ON pre.ID = mov.PrestadorId "
-                SQL = SQL & "WHERE PeriodoLiquidacionId = " & pPerId
+                SQL = SQL & "WHERE liq.PeriodoLiquidacionId = " & pPerId
 
                 If objPeriodo.flgCerrado = 0 Then
 
                     SQL = SQL & " UNION "
 
-                    SQL = SQL & "SELECT 0 AS ID, pre.ID AS PrestadorId, mov.ID AS MovilId, pre.AbreviaturaId, pre.RazonSocial, 0.00 AS Importe "
+                    SQL = SQL & "SELECT 0 AS ID, pre.ID AS PrestadorId, mov.ID AS MovilId, pre.AbreviaturaId, pre.RazonSocial, 0.00 AS Importe, 0, '' AS regFechaHora, '' AS Ver "
                     SQL = SQL & "FROM Prestadores pre "
                     SQL = SQL & "INNER JOIN Moviles mov ON pre.ID = mov.PrestadorId "
                     SQL = SQL & "WHERE pre.Activo = 1 "
@@ -57,8 +57,12 @@ Public Class conLiquidacionesPrestadores
                 dt.Columns.Add("flgSeleccion", GetType(Boolean))
                 dt.Columns("flgSeleccion").DefaultValue = False
 
+                dt.Columns.Add("liqCerrado", GetType(Boolean))
+                dt.Columns("liqCerrado").DefaultValue = False
+
                 For vIdx = 0 To dt.Rows.Count - 1
                     dt(vIdx)("flgSeleccion") = False
+                    dt(vIdx)("liqCerrado") = setIntToBool(dt(vIdx)("flgCerrado"))
                 Next
 
                 GetByPeriodoLiquidacion = dt

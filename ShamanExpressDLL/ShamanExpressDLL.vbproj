@@ -143,6 +143,7 @@
     <Compile Include="dbClasesControladores\conEstadosTurnos.vb" />
     <Compile Include="dbClasesControladores\conFeriados.vb" />
     <Compile Include="dbClasesControladores\conFormasPago.vb" />
+    <Compile Include="dbClasesControladores\conFormulariosControles.vb" />
     <Compile Include="dbClasesControladores\conGoogleMapsImagenes.vb" />
     <Compile Include="dbClasesControladores\conGradosOperativos.vb" />
     <Compile Include="dbClasesControladores\conGradosOperativosConfig.vb" />
@@ -176,7 +177,9 @@
     <Compile Include="dbClasesControladores\conlckIncidentes.vb" />
     <Compile Include="dbClasesControladores\conlckJobs.vb" />
     <Compile Include="dbClasesControladores\conlckTraslados.vb" />
+    <Compile Include="dbClasesControladores\conLiqPrestadoresIncidentesConceptos.vb" />
     <Compile Include="dbClasesControladores\conLiquidacionesPrestadores.vb" />
+    <Compile Include="dbClasesControladores\conLiquidacionesPrestadoresIncidentes.vb" />
     <Compile Include="dbClasesControladores\conLocalidades.vb" />
     <Compile Include="dbClasesControladores\conMarcasEquipamiento.vb" />
     <Compile Include="dbClasesControladores\conMarcasModelos.vb" />
@@ -221,6 +224,7 @@
     <Compile Include="dbClasesControladores\conPrestadores.vb" />
     <Compile Include="dbClasesControladores\conPrestadoresClientes.vb" />
     <Compile Include="dbClasesControladores\conPrestadoresContactos.vb" />
+    <Compile Include="dbClasesControladores\conPrestadoresMovilesTarifas.vb" />
     <Compile Include="dbClasesControladores\conPrestadoresTarifas.vb" />
     <Compile Include="dbClasesControladores\conProveedores.vb" />
     <Compile Include="dbClasesControladores\conProvincias.vb" />
@@ -395,7 +399,9 @@
     <Compile Include="dbClases\typlckIncidentes.vb" />
     <Compile Include="dbClases\typlckJobs.vb" />
     <Compile Include="dbClases\typlckTraslados.vb" />
+    <Compile Include="dbClases\typLiqPrestadoresIncidentesConceptos.vb" />
     <Compile Include="dbClases\typLiquidacionesPrestadores.vb" />
+    <Compile Include="dbClases\typLiquidacionesPrestadoresIncidentes.vb" />
     <Compile Include="dbClases\typLocalidades.vb" />
     <Compile Include="dbClases\typMarcasEquipamiento.vb" />
     <Compile Include="dbClases\typMarcasModelos.vb" />
@@ -448,6 +454,7 @@
     <Compile Include="dbClases\typPrestadores.vb" />
     <Compile Include="dbClases\typPrestadoresClientes.vb" />
     <Compile Include="dbClases\typPrestadoresContactos.vb" />
+    <Compile Include="dbClases\typPrestadoresMovilesTarifas.vb" />
     <Compile Include="dbClases\typPrestadoresTarifas.vb" />
     <Compile Include="dbClases\typProveedores.vb" />
     <Compile Include="dbClases\typProvincias.vb" />

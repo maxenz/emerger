@@ -198,10 +198,11 @@ Public Class conMovilesLocalidades
             Dim vPrvLst As String = ""
             Dim vParLst As String = ""
             Dim vLocLst As String = ""
+            Dim vModAnt As Integer = 0
             Dim vRefLst As Double = 0
             Dim vNroPri As Integer = 1
 
-            dtView.Sort = "Pais ASC, Provincia ASC, Partido ASC, Localidad ASC, ValorReferencia ASC"
+            dtView.Sort = "Pais ASC, Provincia ASC, Partido ASC, Localidad ASC, NroPrioridad ASC, ValorReferencia ASC"
 
             For Each row As DataRowView In dtView
 
@@ -212,10 +213,11 @@ Public Class conMovilesLocalidades
                         vPrvLst = row("Provincia")
                         vParLst = row("Partido")
                         vLocLst = row("Localidad")
+                        vModAnt = row("ModoCobertura")
                         vNroPri = 1
                         row("PrioridadAuto") = vNroPri
                     Else
-                        If row("ValorReferencia") > vRefLst Then
+                        If row("ValorReferencia") > vRefLst Or vModAnt > 0 Then
                             vNroPri = vNroPri + 1
                         End If
                         row("PrioridadAuto") = vNroPri

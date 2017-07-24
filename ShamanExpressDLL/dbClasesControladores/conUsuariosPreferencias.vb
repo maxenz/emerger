@@ -6,6 +6,29 @@ Public Class conUsuariosPreferencias
     Public Sub New(Optional ByVal pCnnName As String = "")
         MyBase.New(pCnnName)
     End Sub
+
+    Public Function DeleteAllPreferencias(ByVal pIdUserPref As Int64, ByVal pNombreForm As String) As Int16
+
+        Try
+
+            Dim SQL As String
+
+            SQL = "DELETE "
+            SQL = SQL & " FormulariosControles "
+            SQL = SQL & " WHERE UsuariosPreferenciasID = " + pIdUserPref.ToString
+            SQL = SQL & " AND NombreFormulario = '" + pNombreForm + "'"
+
+            Dim cmdBas As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
+            Dim rowsAffected = cmdBas.ExecuteNonQuery
+
+            Return rowsAffected
+
+        Catch ex As Exception
+            HandleError(Me.GetType.Name, "GetAll", ex)
+            Return Nothing
+        End Try
+    End Function
+
     Public Function GetAllPreferencias(ByVal pIdUser As Int64, ByVal pNombreForm As String) As DataTable
 
         Try
@@ -15,8 +38,8 @@ Public Class conUsuariosPreferencias
             SQL = "SELECT FC.NombreControl, FC.Valor, FC.XML "
             SQL = SQL & " FROM UsuariosPreferencias UP "
             SQL = SQL & " INNER JOIN FormulariosControles FC ON UP.ID = FC.UsuariosPreferenciasID "
-            SQL = SQL & " WHERE UP.UsuarioId = " + pIdUser.ToString
-            SQL = SQL & " AND FC.NombreFormulario = " + pNombreForm
+            SQL = SQL & " WHERE FC.UsuariosPreferenciasID = " + pIdUser.ToString
+            SQL = SQL & " AND FC.NombreFormulario = '" + pNombreForm + "'"
 
             Dim cmdBas As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
             Dim dt As New DataTable
@@ -30,22 +53,24 @@ Public Class conUsuariosPreferencias
         End Try
     End Function
 
-    Public Function GetHojaEstilo(ByVal pPID As Int64) As String
+    Public Function GetUsuarioPreferencia(ByVal pIdUser As Int64) As DataTable
         Try
             Dim SQL As String
-            SQL = "SELECT HE.Nombre FROM  = "
+
+            SQL = "SELECT Id, UsuarioId, HojaEstilo FROM  "
             SQL = SQL & " UsuariosPreferencias UP "
-            SQL = SQL & " INNER JOIN HojaEstilo HE ON UP.HojaEstiloId = HE.ID" & pPID
+            SQL = SQL & " WHERE UP.ID = " & pIdUser
 
 
-            Dim cmFind As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
-            Dim vOutVal As String = CType(cmFind.ExecuteScalar, String)
+            Dim cmdBas As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
+            Dim dt As New DataTable
+            dt.Load(cmdBas.ExecuteReader)
 
-            Return vOutVal
+            Return dt
 
         Catch ex As Exception
             HandleError(Me.GetType.Name, "GetIDByIndex", ex)
-            Return String.Empty
+            Return Nothing
         End Try
 
     End Function

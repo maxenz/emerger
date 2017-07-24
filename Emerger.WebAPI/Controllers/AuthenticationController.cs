@@ -48,7 +48,9 @@ namespace Emerger.WebAPI.Controllers
 							Profile = new
 							{
 								Name = "Javier Nigrelli",
-								Email = "jnigrelli@paramedic.com.ar"
+								Email = "jnigrelli@paramedic.com.ar",
+								UserName = "javier",
+								Id = 1
 							}
 						});
 				}

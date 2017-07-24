@@ -10,7 +10,7 @@ Public Class typUsuariosPreferencias
 
     Public Property UsuarioId() As typUsuarios
         Get
-            Return clUsuarioId
+            Return Me.GetTypProperty(clUsuarioId)
         End Get
         Set(ByVal value As typUsuarios)
             clUsuarioId = value

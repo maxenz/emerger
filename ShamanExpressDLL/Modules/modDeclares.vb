@@ -143,6 +143,7 @@ Public Module modDeclares
         PlanesAbonos = 2
         Ajustes = 3
         Otros = 4
+        SubConceptos = 5
         Todos = 99
     End Enum
     Enum accMailingClientes

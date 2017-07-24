@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Nav from '../components/Nav';
 import Filters from '../components/Prestaciones/Filters';
 import Prestaciones from '../components/Prestaciones/Prestaciones';
+import Footer from '../components/Footer';
 import withAuth from  '../utils/withAuth';
 
 class PrestacionesContainer extends Component {
@@ -12,6 +13,7 @@ class PrestacionesContainer extends Component {
             <Nav properties={this.props}/>
             <Filters />
             <Prestaciones />
+            <Footer />
        </div>
      )
    }

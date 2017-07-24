@@ -5,12 +5,18 @@ Public Class conPeriodosLiquidaciones
     Public Sub New(Optional ByVal pCnnName As String = "")
         MyBase.New(pCnnName)
     End Sub
-    Public Function GetAll() As DataTable
+    Public Function GetAll(Optional pTop As Integer = 0) As DataTable
         GetAll = Nothing
         Try
             Dim SQL As String
 
-            SQL = "SELECT ID, SUBSTRING(CAST(Periodo AS varchar(6)), 5, 2) + '/' + SUBSTRING(CAST(Periodo AS varchar(6)), 1, 4) AS PeriodoStr, FecDesde, FecHasta, flgCerrado "
+            If pTop = 0 Then
+                SQL = "SELECT "
+            Else
+                SQL = "SELECT TOP " & pTop & " "
+            End If
+
+            SQL = SQL & "ID, SUBSTRING(CAST(Periodo AS varchar(6)), 5, 2) + '/' + SUBSTRING(CAST(Periodo AS varchar(6)), 1, 4) AS PeriodoStr, FecDesde, FecHasta, flgCerrado "
             SQL = SQL & "FROM PeriodosLiquidaciones "
             SQL = SQL & "ORDER BY Periodo DESC"
 

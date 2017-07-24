@@ -17,7 +17,7 @@ namespace Emerger.Services
 			var conUsers = new conUsuarios();
 			bool change = false;
 			Logger.Info(string.Format("Se intentará loguear el usuario {0}", username));
-			long result = conUsers.Autenticar(username, password, ref change);
+			long result = conUsers.Autenticar(username, password, ref change, modDeclares.modLogin.lExtranet);
 			Logger.Info(string.Format("El resultado del intento de login fue: {0}", result.ToString()));
 
 			return result > 0;

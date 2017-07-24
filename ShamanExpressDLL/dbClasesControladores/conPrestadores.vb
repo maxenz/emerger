@@ -138,12 +138,14 @@ Public Class conPrestadores
         Try
             Dim SQL As String
 
-            SQL = "SELECT A.ID, A.Dominio, B.Marca + ' - ' + B.Modelo AS MarcaModelo, C.Movil, D.Descripcion AS TipoMovil "
-            SQL = SQL & "FROM Vehiculos A "
-            SQL = SQL & "INNER JOIN MarcasModelos B ON (A.MarcaModeloId = B.ID) "
-            SQL = SQL & "LEFT JOIN Moviles C ON (A.ID = C.VehiculoId) "
-            SQL = SQL & "LEFT JOIN TiposMoviles D ON (C.TipoMovilId = D.ID) "
-            SQL = SQL & "WHERE (A.PrestadorId = " & pPre & ") ORDER BY C.Movil, A.Dominio"
+            SQL = "SELECT veh.ID, veh.Dominio, mmd.Marca + ' - ' + mmd.Modelo AS MarcaModelo, mov.ID AS MovilId, mov.Movil, tip.Descripcion AS TipoMovil, "
+            SQL = SQL & "ISNULL(tar.TarifaId, 0) AS TarifaId "
+            SQL = SQL & "FROM Vehiculos veh "
+            SQL = SQL & "INNER JOIN MarcasModelos mmd ON (veh.MarcaModeloId = mmd.ID) "
+            SQL = SQL & "LEFT JOIN Moviles mov ON (veh.ID = mov.VehiculoId) "
+            SQL = SQL & "LEFT JOIN TiposMoviles tip ON (mov.TipoMovilId = tip.ID) "
+            SQL = SQL & "LEFT JOIN PrestadoresMovilesTarifas tar ON (veh.PrestadorId = tar.PrestadorId) AND (mov.ID = tar.MovilId) "
+            SQL = SQL & "WHERE (veh.PrestadorId = " & pPre & ") ORDER BY mov.Movil, veh.Dominio"
 
             Dim cmdBas As New SqlCommand(SQL, cnnsNET(Me.myCnnName), cnnsTransNET(Me.myCnnName))
             Dim dt As New DataTable

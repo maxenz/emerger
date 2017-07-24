@@ -36,7 +36,7 @@ Module modFuncionesGenerales
                 haveProductoSub = False
             End If
 
-        ElseIf pNod = "12" Or pNod = "14" Or pNod = "34" Then
+        ElseIf pNod = "12" Or pNod = "34" Then
 
             If Debugger.IsAttached Then
                 haveProductoSub = True

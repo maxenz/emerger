@@ -13,7 +13,7 @@ Public Class conSucesosIncidentes
 
             Dim SQL As String
 
-            SQL = "SELECT ID, AbreviaturaId, Descripcion "
+            SQL = "SELECT ID, AbreviaturaId, Descripcion, Orden "
             SQL = SQL & "FROM SucesosIncidentes "
             SQL = SQL & "ORDER BY AbreviaturaId"
 

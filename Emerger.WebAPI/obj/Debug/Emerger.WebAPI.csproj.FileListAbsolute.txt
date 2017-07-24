@@ -1,3 +1,4 @@
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\obj\Debug\Emerger.WebAPI.csprojResolveAssemblyReference.cache
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\NLog.config
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\roslyn\csc.exe
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -61,6 +62,5 @@ C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\System.Web.We
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\System.Net.Http.Formatting.xml
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\ShamanExpressDLL.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\bin\ShamanExpressDLL.xml
-C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\obj\Debug\Emerger.WebAPI.csprojResolveAssemblyReference.cache
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\obj\Debug\Emerger.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.WebAPI\obj\Debug\Emerger.pdb

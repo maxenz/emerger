@@ -179,8 +179,42 @@ div.navbar-container {
 }
 
 .row.no-margins {
-  margin-right:0;
-  margin-left:0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row.no-margins>.col-2 {
+  padding-left: 0;
+}
+
+hr {
+  width: 80%;
+}
+
+.margin-bottom-5 {
+  margin-bottom:5px;
+}
+
+/* Colores */
+
+.color-green {
+  color: #2ecc71;
+}
+
+.color-red {
+  color: #d9534f;
+}
+
+.color-yellow {
+  color: #d9d600;
+}
+
+.color-blue {
+  color: #3498db;
+}
+
+.background-green {
+  background: #2ecc71;
 }
 
 /* Botones */
@@ -213,20 +247,79 @@ div.navbar-container {
 .SingleDatePickerInput {
   font-size: 1rem;
   border-radius: 0.25rem;
-  border:1px solid #fff;
+  border: 1px solid #fff;
 }
 
 .DateInput__display-text--focused {
-  background:#2ecc71;
-  border-color:#2ecc71;
-  color:white;
+  background: #2ecc71;
+  border-color: #2ecc71;
+  color: white;
 }
 
 .CalendarDay--selected {
-  background:#2ecc71;
-  border:1px double #2ecc71;
+  background: #2ecc71;
+  border: 1px double #2ecc71;
 }
 
-.CalendarDay--selected-start:active, .CalendarDay--selected-end:active, .CalendarDay--selected:active {
-    background:#2ecc71;
+.CalendarDay--selected-start:active,
+.CalendarDay--selected-end:active,
+.CalendarDay--selected:active {
+  background: #2ecc71;
+}
+
+.container-filters {
+  display: flex;
+}
+
+.container-filters>div {
+  width: 15%;
+  margin-right: 5px;
+}
+
+
+/* Popovers */
+
+.emerger-information-element {
+  width: 450px;
+  max-width: 450px;
+  left: -10px !important;
+}
+
+.emerger-information-element>.popover-inner>.popover-title {
+  background: #2ecc71;
+  border-bottom: 5px solid #d9d600;
+  color: #fff;
+}
+
+
+/* Footer */
+
+.footer-container {
+  background-color: #2ecc71;
+  padding: 10px;
+  color: #fff;
+  border-top: 5px solid #d9d600;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-container i.fa {
+  margin-right: 5px;
+}
+
+.footer-container div.col-2 div {
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 0.25rem;
+  padding: 5px;
+  border: 2px solid grey;
+}
+
+.footer-container .badge {
+  background-color: #2ecc71;
 }

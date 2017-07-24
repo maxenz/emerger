@@ -5,6 +5,7 @@
     Private clPrestadorId As typPrestadores
     Private clPersonalId As typPersonal
     Private clPeriodoLiquidacionId As typPeriodosLiquidaciones
+    Private clflgCerrado As Integer
     Private clImporte As Decimal
     Public Sub New(Optional ByVal pCnnName As String = "")
         MyBase.New(pCnnName)
@@ -39,6 +40,14 @@
         End Get
         Set(ByVal value As typPeriodosLiquidaciones)
             clPeriodoLiquidacionId = value
+        End Set
+    End Property
+    Public Property flgCerrado() As Integer
+        Get
+            Return clflgCerrado
+        End Get
+        Set(ByVal value As Integer)
+            clflgCerrado = value
         End Set
     End Property
     Public Property Importe() As Decimal

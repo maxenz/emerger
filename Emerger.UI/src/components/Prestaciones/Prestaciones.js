@@ -15,7 +15,6 @@ class Prestaciones extends Component {
 
     };
  
-
         render() {
 
             const data = _.map(_.range(5553), d => {

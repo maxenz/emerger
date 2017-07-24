@@ -20,6 +20,7 @@ import axios from 'axios';
 const auth = new AuthService();
 axios.defaults.baseURL = 'http://localhost/Emerger.WebAPI/api';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + auth.getJwtToken();
+axios.defaults.headers.common['User'] = auth.getProfile().id;
 
 const Root = () => {
   return (
