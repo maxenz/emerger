@@ -12,6 +12,8 @@ import AuthService from './utils/AuthService';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-select/dist/react-select.css';
 import './fonts/css/font-awesome.css';
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-table/react-table.css';
 import './App.css';
 import axios from 'axios';
 
@@ -39,4 +41,6 @@ const Root = () => {
 
 ReactDOM.render(<Root />, document.getElementById('root'));
 
-registerServiceWorker();
+// --> Descomentar para produccion
+
+//registerServiceWorker();

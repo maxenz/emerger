@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using Emerger.Core.Utilities;
 
 namespace WebApi.Jwt
 {
@@ -9,7 +10,7 @@ namespace WebApi.Jwt
     {
         public const string Secret = "856FECBA3B06519C8DDDBC80BB080553";
 
-        public static string GenerateToken(string username, int expireMinutes = 20)
+        public static string GenerateToken(string username, int expireMinutes = 120)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -59,8 +60,9 @@ namespace WebApi.Jwt
                 return principal;
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
+				Logger.Error("No se pudo validar el token", ex);
                 return null;
             }
         }

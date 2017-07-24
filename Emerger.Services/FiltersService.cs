@@ -1,4 +1,5 @@
 ﻿using Emerger.DomainModel;
+using System;
 using System.Collections.Generic;
 
 namespace Emerger.Services
@@ -20,8 +21,8 @@ namespace Emerger.Services
 		{
 			return new List<Filter>()
 			{
-				new Filter(1,"07/10"),
-				new Filter(2,"08/10")
+				new PeriodFilter(1,"07/10", DateTime.Now, DateTime.Now.AddDays(10)),
+				new PeriodFilter(2,"08/10", DateTime.Now.AddDays(30), DateTime.Now.AddDays(40)),
 			};
 		}
 
