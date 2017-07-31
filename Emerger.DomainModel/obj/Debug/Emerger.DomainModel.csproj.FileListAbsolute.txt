@@ -2,3 +2,4 @@ C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.DomainModel\bin\Debug\Em
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.DomainModel\bin\Debug\Emerger.DomainModel.pdb
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.DomainModel\obj\Debug\Emerger.DomainModel.dll
 C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.DomainModel\obj\Debug\Emerger.DomainModel.pdb
+C:\Users\Maxo\Desktop\Paramedic\emerger\Emerger\Emerger.DomainModel\obj\Debug\Emerger.DomainModel.csprojResolveAssemblyReference.cache

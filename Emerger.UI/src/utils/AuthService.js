@@ -14,6 +14,7 @@ export default class AuthService {
           this.setJwtToken(res.token);
           this.setProfile(res.profile);
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.getJwtToken();
+          axios.defaults.headers.common['User'] = this.getProfile().id;
       });
   }
 

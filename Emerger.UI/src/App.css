@@ -56,7 +56,7 @@
   padding: 20px;
   background: #2ecc71;
   border-radius: 5px;
-  border-top: 5px solid #d9d600;
+  border-top: 5px solid #f7ca18;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
@@ -117,10 +117,10 @@
 .login-block button {
   width: 100%;
   height: 40px;
-  background: #d9d600;
+  background: #f7ca18;
   box-sizing: border-box;
   border-radius: 5px;
-  border: 1px solid #d9d600;
+  border: 1px solid #f7ca18;
   color: #fff;
   font-weight: bold;
   text-transform: uppercase;
@@ -135,7 +135,7 @@
 }
 
 div.navbar-container {
-  border-bottom: 5px solid #d9d600;
+  border-bottom: 5px solid #f7ca18;
 }
 
 .navbar-container>.navbar {
@@ -147,10 +147,6 @@ div.navbar-container {
   margin-top: 20px;
   padding: 20px;
   text-align: center;
-}
-
-.color-red {
-  color: #e74c3c;
 }
 
 .margin-right-5 {
@@ -206,7 +202,7 @@ hr {
 }
 
 .color-yellow {
-  color: #d9d600;
+  color: #f7ca18;
 }
 
 .color-blue {
@@ -237,10 +233,15 @@ hr {
 
 .Select-control {
   height: 38px;
+  font-size:13px;
+}
+
+.Select-menu-outer {
+  font-size:13px;
 }
 
 .DateInput {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 12px;
 }
 
@@ -287,7 +288,7 @@ hr {
 
 .emerger-information-element>.popover-inner>.popover-title {
   background: #2ecc71;
-  border-bottom: 5px solid #d9d600;
+  border-bottom: 5px solid #f7ca18;
   color: #fff;
 }
 
@@ -295,10 +296,10 @@ hr {
 /* Footer */
 
 .footer-container {
-  background-color: #2ecc71;
+  background-color: #ecf0f1;
   padding: 10px;
   color: #fff;
-  border-top: 5px solid #d9d600;
+  border-top: 5px solid #f7ca18;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -321,5 +322,11 @@ hr {
 }
 
 .footer-container .badge {
-  background-color: #2ecc71;
+  background-color: #808080;
+}
+
+/* Tablas */
+
+.ReactTable .rt-tbody {
+  font-size:13px;
 }

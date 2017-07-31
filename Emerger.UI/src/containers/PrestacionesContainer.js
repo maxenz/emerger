@@ -4,19 +4,145 @@ import Filters from '../components/Prestaciones/Filters';
 import Prestaciones from '../components/Prestaciones/Prestaciones';
 import Footer from '../components/Footer';
 import withAuth from  '../utils/withAuth';
+import axios from 'axios';
+import moment from 'moment';
 
 class PrestacionesContainer extends Component {
 
-   render() {
-     return (
-       <div>
-            <Nav properties={this.props}/>
-            <Filters />
-            <Prestaciones />
-            <Footer />
-       </div>
-     )
-   }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ftrCompany : "",
+      ftrSimplePeriod: "",
+      ftrState: "",
+      companies: [],
+      periods: [],
+      states: [],
+      services: [],
+      rangeStartDate: null,
+      rangeEndDate: null,
+      selectedDate: moment()
+    }
+
+    this.isOutsideRange = this.isOutsideRange.bind(this);
+    this.handleSimplePeriodFilterChange = this.handleSimplePeriodFilterChange.bind(this);
+    this.handleCompanyFilterChange = this.handleCompanyFilterChange.bind(this);
+    this.handleStateFilterChange = this.handleStateFilterChange.bind(this);
+    this.handleDatePickerChange = this.handleDatePickerChange.bind(this);
+  }
+
+  onSubmitHandler = () => {
+      axios.get('/services', {
+          params: {
+              companyId: 1,
+              stateId: 1,
+              periodId: 1
+          }
+      })
+      .then(res => {  
+          this.setState({services: res.data.services});
+      })
+      .catch(function(error){
+          console.log(error);
+      });
+  }
+
+  componentDidMount() {    
+    axios
+    .all([this.getCompanies(), this.getPeriods(), this.getStates()])
+    .then(res => {  
+        this
+        .setState({
+            companies: res[0].data.companies.map(this.mapFilter),
+            periods: res[1].data.periods.map(this.mapPeriodFilter),
+            states: res[2].data.states.map(this.mapFilter)
+        });                
+    })
+    .catch(function(error){
+        console.log(error);
+    });
 }
 
-export default withAuth(PrestacionesContainer) 
+  getCompanies = () => {
+      return axios.get('/filters/companies');
+  }
+
+  getPeriods = () => {
+      return axios.get('/filters/periods');
+  }
+
+  getStates = () => {
+      return axios.get('/filters/states');
+  }
+
+  mapFilter = (obj) => {
+      return {value: obj.id, label: obj.description};
+  }
+
+  mapPeriodFilter = (obj) => {
+      return {value: obj.id, label: obj.description, dateFrom: moment(obj.dateFrom), dateTo: moment(obj.dateTo).add(1, 'days')};
+  }
+
+  handleCompanyFilterChange = (val) => {
+      this.setState({ftrCompany: val});
+  }
+
+  handleSimplePeriodFilterChange = (obj) => {
+      this.setState({ftrSimplePeriod: obj});
+      if (obj !== null) {
+          this.setState({rangeStartDate: this.getPropertyValueById(this.state.periods, obj.value, 'dateFrom')});
+          this.setState({rangeEndDate: this.getPropertyValueById(this.state.periods, obj.value, 'dateTo')});
+          this.setState({selectedDate: this.getPropertyValueById(this.state.periods, obj.value, 'dateFrom')});
+      }
+  }
+
+  handleStateFilterChange = (val) => {
+    this.setState({ftrState: val});
+  }
+
+  handleDatePickerChange = (val) => {
+    this.setState({selectedDate: val})
+  }
+
+  getPropertyValueById = (arr, id, prop) => {
+      return arr.filter(function(obj) {
+          return obj.value === id;
+      })[0][prop];
+  }
+
+  isOutsideRange = (_date) => {
+      return _date < this.state.rangeStartDate || _date > this.state.rangeEndDate;
+  }
+
+  checkService = () => {
+      console.log('check service');
+  }
+
+  render() {
+    return (
+      <div>
+          <Nav properties={this.props}/>
+          <Filters
+              onSubmitHandler={this.onSubmitHandler}
+              ftrCompany={this.state.ftrCompany}
+              ftrSimplePeriod={this.state.ftrSimplePeriod}
+              ftrState={this.state.ftrState}
+              selectedDate={this.state.selectedDate}
+              companies={this.state.companies}
+              states={this.state.states}
+              periods={this.state.periods}
+              handleCompanyFilterChange={this.handleCompanyFilterChange}
+              handleSimplePeriodFilterChange={this.handleSimplePeriodFilterChange}
+              handleStateFilterChange={this.handleStateFilterChange}
+              handleDatePickerChange={this.handleDatePickerChange}
+              isOutsideRange={this.isOutsideRange}
+           />
+          <Prestaciones services={this.state.services} onCheckService={this.checkService} />
+          <Footer />
+      </div>
+    )
+  }
+}
+
+export default withAuth(PrestacionesContainer);

@@ -18,7 +18,7 @@ namespace Emerger.Services
 
 			foreach(DataRow row in data.Rows)
 			{
-				filters.Add(new Filter(Convert.ToInt32(row["Id"]), row["RazonSocial"].ToString()));
+				filters.Add(new Filter(row));
 			}
 
 			return filters;
@@ -33,12 +33,7 @@ namespace Emerger.Services
 			foreach (DataRow row in data.Rows)
 			{
 				filters.Add(
-					new PeriodFilter(
-						Convert.ToInt32(row["Id"]),
-						row["PeriodoStr"].ToString(),
-						Convert.ToDateTime(row["FecDesde"]),
-						Convert.ToDateTime(row["FecHasta"])
-					));
+					new PeriodFilter(row));
 			}
 
 			return filters;

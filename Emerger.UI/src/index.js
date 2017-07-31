@@ -16,11 +16,14 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-table/react-table.css';
 import './App.css';
 import axios from 'axios';
+import moment from 'moment';
 
 const auth = new AuthService();
 axios.defaults.baseURL = 'http://localhost/Emerger.WebAPI/api';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + auth.getJwtToken();
 axios.defaults.headers.common['User'] = auth.getProfile().id;
+
+moment.locale('es');
 
 const Root = () => {
   return (

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace Emerger.DomainModel
 {
@@ -23,6 +20,13 @@ namespace Emerger.DomainModel
 		{
 			this.DateFrom = dateFrom;
 			this.DateTo = dateTo;
+		}
+
+		public PeriodFilter(DataRow row) : base(row)
+		{
+			this.Description = row["PeriodoStr"].ToString();
+			this.DateFrom = Convert.ToDateTime(row["FecDesde"]);
+			this.DateTo = Convert.ToDateTime(row["FecHasta"]);
 		}
 
 		#endregion
