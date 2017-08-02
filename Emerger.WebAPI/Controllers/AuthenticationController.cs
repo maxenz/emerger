@@ -64,7 +64,6 @@ namespace Emerger.WebAPI.Controllers
 							ErrorMessage = "Los datos ingresados no son válidos"
 						});
 				}
-
 			}
 			catch (Exception ex)
 			{

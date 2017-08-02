@@ -33,11 +33,11 @@ namespace Emerger.Controllers
 
 		[HttpGet]
 		[JwtAuthentication]
-		public HttpResponseMessage Get(int companyId = 0, int stateId = 0, int periodId = 0, DateTime? dayInPeriod = null)
+		public HttpResponseMessage Get(long companyId = 0, long stateId = 0, long periodId = 0, DateTime? dayInPeriod = null)
 		{
 			try
 			{
-				List<Service> services = _ServicesService.GetServices();
+				List<Service> services = _ServicesService.GetServices(companyId, periodId,stateId);
 
 				return Request.CreateResponse(
 					HttpStatusCode.OK,

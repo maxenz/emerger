@@ -5,6 +5,8 @@ import _ from 'lodash';
 import namor from 'namor';
 import moment from 'moment';
 import 'moment/locale/es';
+import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap';
+import ModalServiceDetails from './ModalServiceDetails';
 
 class Prestaciones extends Component {
 
@@ -12,10 +14,29 @@ class Prestaciones extends Component {
         super(props);
 
         this.state = {
-
+            incModal: false,
+            selectedService: null
         }
 
+        this.toggleIncModal = this.toggleIncModal.bind(this);
+
     };
+
+    toggleIncModal(serviceNumber) {
+        
+        var service = null;
+
+        if (serviceNumber) {            
+            service = this.props.services.filter(function(s){
+                return s.number === serviceNumber;
+            })[0];
+        } 
+
+        this.setState({
+            incModal: !this.state.incModal,
+            selectedService: service
+        });
+    }
  
     render() {
 
@@ -32,11 +53,13 @@ class Prestaciones extends Component {
                     {
                         Header: 'Nro',
                         accessor: 'number',
+                        Cell: props => <a onClick={() => this.toggleIncModal(props.value)} href="javascript:void(0)" >{props.value}</a>,
                         style: {textAlign: 'center'}
                     },
                     {
                         Header: 'Conc.',
-                        accessor: 'concept'
+                        accessor: 'concept',
+                        style: {textAlign: 'center'}                          
                     },
                     {
                         Header: 'Cliente',
@@ -44,17 +67,18 @@ class Prestaciones extends Component {
                     },
                     {
                         Header: 'Paciente',
-                        accessor: 'patient'
+                        accessor: 'patient',
+                        width: 200
                     },
                     {
                         Header: 'Origen',
                         accessor: 'origin',
-                        style: {textAlign: 'center'}
+                        width: 150
                     },
                     {
                         Header: 'Destino',
                         accessor: 'destiny',
-                        style: {textAlign: 'center'}                        
+                        width: 150                       
                     },
                     {
                         Header: 'Km.',
@@ -95,7 +119,13 @@ class Prestaciones extends Component {
         ]
 
             return (         
-                <div>   
+                <div> 
+                    {
+                        this.state.selectedService ? 
+                            <ModalServiceDetails modalOpened={this.state.incModal} onModalToggle={this.toggleIncModal} service={this.state.selectedService} /> 
+                            : null
+                    }
+
                     <div className="table-wrap">
                     <ReactTable
                         className="-striped -highlight"

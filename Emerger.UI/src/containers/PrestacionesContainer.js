@@ -9,60 +9,65 @@ import moment from 'moment';
 
 class PrestacionesContainer extends Component {
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      ftrCompany : "",
-      ftrSimplePeriod: "",
-      ftrState: "",
-      companies: [],
-      periods: [],
-      states: [],
-      services: [],
-      rangeStartDate: null,
-      rangeEndDate: null,
-      selectedDate: moment()
+        this.state = {
+        ftrCompany : "",
+        ftrSimplePeriod: "",
+        ftrState: "",
+        companies: [],
+        periods: [],
+        states: [
+            {value: 0, label: 'Todos'},
+            {value: 1, label: 'Reclamados'},
+            {value: 2, label: 'Pendientes'},
+            {value: 3, label: 'Resueltos'}
+        ],
+        services: [],
+        rangeStartDate: null,
+        rangeEndDate: null,
+        selectedDate: moment()
+        }
+
+        this.isOutsideRange = this.isOutsideRange.bind(this);
+        this.handleSimplePeriodFilterChange = this.handleSimplePeriodFilterChange.bind(this);
+        this.handleCompanyFilterChange = this.handleCompanyFilterChange.bind(this);
+        this.handleStateFilterChange = this.handleStateFilterChange.bind(this);
+        this.handleDatePickerChange = this.handleDatePickerChange.bind(this);
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
     }
 
-    this.isOutsideRange = this.isOutsideRange.bind(this);
-    this.handleSimplePeriodFilterChange = this.handleSimplePeriodFilterChange.bind(this);
-    this.handleCompanyFilterChange = this.handleCompanyFilterChange.bind(this);
-    this.handleStateFilterChange = this.handleStateFilterChange.bind(this);
-    this.handleDatePickerChange = this.handleDatePickerChange.bind(this);
-  }
+    onSubmitHandler = () => {
+        axios.get('/services', {
+            params: {
+                companyId: this.state.ftrCompany.value,
+                stateId: this.state.ftrState.value,
+                periodId: this.state.ftrSimplePeriod.value
+            }
+        })
+        .then(res => {  
+            this.setState({services: res.data.services});
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }
 
-  onSubmitHandler = () => {
-      axios.get('/services', {
-          params: {
-              companyId: 1,
-              stateId: 1,
-              periodId: 1
-          }
-      })
-      .then(res => {  
-          this.setState({services: res.data.services});
-      })
-      .catch(function(error){
-          console.log(error);
-      });
-  }
-
-  componentDidMount() {    
-    axios
-    .all([this.getCompanies(), this.getPeriods(), this.getStates()])
-    .then(res => {  
-        this
-        .setState({
-            companies: res[0].data.companies.map(this.mapFilter),
-            periods: res[1].data.periods.map(this.mapPeriodFilter),
-            states: res[2].data.states.map(this.mapFilter)
-        });                
-    })
-    .catch(function(error){
-        console.log(error);
-    });
-}
+    componentDidMount() {    
+        axios
+        .all([this.getCompanies(), this.getPeriods()])
+        .then(res => {  
+            this
+            .setState({
+                companies: res[0].data.companies.map(this.mapFilter),
+                periods: res[1].data.periods.map(this.mapPeriodFilter)
+            });                
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }
 
   getCompanies = () => {
       return axios.get('/filters/companies');
@@ -70,10 +75,6 @@ class PrestacionesContainer extends Component {
 
   getPeriods = () => {
       return axios.get('/filters/periods');
-  }
-
-  getStates = () => {
-      return axios.get('/filters/states');
   }
 
   mapFilter = (obj) => {
@@ -119,6 +120,10 @@ class PrestacionesContainer extends Component {
       console.log('check service');
   }
 
+  selectService = () => {
+      console.log('select servie');
+  }
+
   render() {
     return (
       <div>
@@ -138,7 +143,7 @@ class PrestacionesContainer extends Component {
               handleDatePickerChange={this.handleDatePickerChange}
               isOutsideRange={this.isOutsideRange}
            />
-          <Prestaciones services={this.state.services} onCheckService={this.checkService} />
+          <Prestaciones services={this.state.services} onCheckService={this.checkService} onSelectService={this.selectService} />
           <Footer />
       </div>
     )

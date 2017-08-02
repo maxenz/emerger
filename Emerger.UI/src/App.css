@@ -330,3 +330,25 @@ hr {
 .ReactTable .rt-tbody {
   font-size:13px;
 }
+
+/* Modal detalles de servicios */
+
+.modal-service-details .modal-header {
+  background-color: #ecf0f1;
+}
+
+.modal-service-details table {
+  margin-bottom:0;
+}
+
+.modal-service-details div.card-block {
+  padding-bottom:0;
+}
+
+.modal-service-details h4 {
+  font-size:18px;
+}
+
+span.italic {
+  font-style: italic;
+}

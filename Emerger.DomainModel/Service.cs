@@ -14,6 +14,8 @@ namespace Emerger.DomainModel
 	{
 		#region Properties
 
+		public long Id { get; set; }
+
 		public DateTime Date { get; set; }
 
 		public string Number { get; set; }
@@ -42,14 +44,19 @@ namespace Emerger.DomainModel
 
 		public Service(DataRow row)
 		{
-			if (row["Fecha"] != DBNull.Value)
+			if (row["IncidenteId"] != DBNull.Value)
 			{
-				this.Date = Convert.ToDateTime(row["Fecha"]);
+				this.Id = Convert.ToInt64(row["IncidenteId"]);
 			}
 
-			if (row["Numero"] != DBNull.Value)
+			if (row["FecIncidente"] != DBNull.Value)
 			{
-				this.Number = row["Numero"].ToString();
+				this.Date = Convert.ToDateTime(row["FecIncidente"]);
+			}
+
+			if (row["NroIncidente"] != DBNull.Value)
+			{
+				this.Number = row["NroIncidente"].ToString();
 			}
 
 			if (row["Concepto"] != DBNull.Value)
@@ -67,19 +74,19 @@ namespace Emerger.DomainModel
 				this.Patient = row["Paciente"].ToString();
 			}
 
-			if (row["Origen"] != DBNull.Value)
+			if (row["LocOrigen"] != DBNull.Value)
 			{
-				this.Origin = row["Origen"].ToString();
+				this.Origin = row["LocOrigen"].ToString();
 			}
 
-			if (row["Destino"] != DBNull.Value)
+			if (row["LocDestino"] != DBNull.Value)
 			{
-				this.Destiny = row["Destino"].ToString();
+				this.Destiny = row["LocDestino"].ToString();
 			}
 
-			if (row["Kilometros"] != DBNull.Value)
+			if (row["Kilometraje"] != DBNull.Value)
 			{
-				this.Kilometers = Convert.ToInt32(row["Kilometros"]);
+				this.Kilometers = Convert.ToInt32(row["Kilometraje"]);
 			}
 
 			if (row["Importe"] != DBNull.Value)
@@ -87,10 +94,19 @@ namespace Emerger.DomainModel
 				this.Amount = Convert.ToDouble(row["Importe"]);
 			}
 
-			if (row["Estado"] != DBNull.Value)
-			{
-				this.State = (ServiceStateType) Convert.ToInt32(row["Estado"]);
-			}
+			//if (row["Estado"] != DBNull.Value)
+			//{
+			//	this.State = (ServiceStateType) Convert.ToInt32(row["Estado"]);
+			//}
+		}
+
+		#endregion
+
+		#region Public Methods
+
+		public void SetDetails(DataRow row)
+		{
+
 		}
 
 		#endregion
