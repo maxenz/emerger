@@ -1,11 +1,7 @@
 ﻿using Emerger.DomainModel;
 using ShamanExpressDLL;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Emerger.Services
 {
@@ -25,8 +21,11 @@ namespace Emerger.Services
 			foreach(DataRow row in dt.Rows)
 			{
 				Service service = new Service(row);
-				//DataTable dtConcepto = liqPrestIncCon.GetByLiquidacionIncidenteId(service.Id);
-				//service.SetDetails(dtConcepto.Rows[0]);
+				DataTable dtServiceDetails = liqPrestIncCon.GetByLiquidacionIncidenteId(service.Id);
+				if (dtServiceDetails != null)
+				{
+					service.SetDetails(dtServiceDetails);
+				}
 				services.Add(new Service(row));
 			}
 

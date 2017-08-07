@@ -32,9 +32,24 @@ namespace Emerger.DomainModel
 
 		public int Kilometers { get; set; }
 
-		public double Amount  { get; set; }
+		public double Amount { get; set; }
 
 		public ServiceStateType State { get; set; }
+
+		public List<ServiceDetail> Details { get; set; }
+
+		public double TotalServiceDetails
+		{
+			get
+			{
+				if (Details != null)
+				{
+					return Details.Sum(x => x.Total);
+				}
+
+				return 0;
+			}
+		}
 
 		#endregion
 
@@ -104,9 +119,13 @@ namespace Emerger.DomainModel
 
 		#region Public Methods
 
-		public void SetDetails(DataRow row)
+		public void SetDetails(DataTable table)
 		{
-
+			this.Details = new List<ServiceDetail>();
+			foreach(DataRow row in table.Rows)
+			{
+				this.Details.Add(new ServiceDetail(row));
+			}
 		}
 
 		#endregion

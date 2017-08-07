@@ -191,6 +191,10 @@ hr {
   margin-bottom:5px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /* Colores */
 
 .color-green {
@@ -312,7 +316,7 @@ hr {
   margin-right: 5px;
 }
 
-.footer-container div.col-2 div {
+.footer-container div.col div {
   background-color: white;
   color: grey;
   text-align: center;
@@ -335,6 +339,7 @@ hr {
 
 .modal-service-details .modal-header {
   background-color: #ecf0f1;
+  border-bottom: 5px solid #f7ca18;
 }
 
 .modal-service-details table {
@@ -351,4 +356,9 @@ hr {
 
 span.italic {
   font-style: italic;
+}
+
+.service-total-border {
+  border-top: 2px solid #000;
+  line-height:35px;
 }

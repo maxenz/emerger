@@ -7,68 +7,17 @@ import moment from 'moment';
 import 'moment/locale/es';
 import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap';
 
-class ModalServiceDetails extends Component {
+class ModalRevision extends Component {
 
      render() {
 
-        //harcodeado, sacar cuando funcione el backend
-        const details = [
-            {
-                id: 1,
-                concept: 'Concepto 1',
-                amount: 234,
-                quantity: 2,
-                total: 468
-            },
-            {
-                id: 2,
-                concept: 'Concepto 2',
-                amount: 200,
-                quantity: 1,
-                total: 200
-            },
-            {
-                id: 3,
-                concept: 'Concepto 3',
-                amount: 300,
-                quantity: 5,
-                total: 1500
-            },
-            {
-                id: 4,
-                concept: 'Concepto 4',
-                amount: 150,
-                quantity: 2,
-                total: 300
-            }
-        ];
-
-        const sumTotal = (total, num) => {
-            return total + num.total;
-        }
-
-        this.props.service.totalServiceDetails = details.reduce(sumTotal,0);
-
-        const lines = () => {
-            return details.map((item, i) => {
-                return (
-                    <tr key={item.id}>
-                        <td className="bold">{item.concept}</td>
-                        <td className="text-xs-center">${item.amount.toFixed(2)}</td>
-                        <td className="text-xs-center">{item.quantity}</td>
-                        <td className="text-xs-right">${item.total.toFixed(2)}</td>
-                    </tr>
-                )
-            })
-        }
-
         return (         
-            <Modal isOpen={this.props.modalOpened} toggle={this.props.onModalToggle} size="lg" className="modal-service-details">
+            <Modal isOpen={this.props.modalOpened} toggle={this.props.onModalToggle} size="lg" className="modal-revision">
                 <ModalHeader toggle={this.props.onModalToggle}>
                     Detalles del incidente
-                     <span className="italic"> {this.props.service.number} </span>
+                     <span className="italic"> sadasd </span>
                       del paciente 
-                      <span className="italic"> {this.props.service.patient}</span>
+                      <span className="italic"> asdfsd</span>
                 </ModalHeader>
                 <ModalBody>
                     <div className="row">
@@ -86,12 +35,11 @@ class ModalServiceDetails extends Component {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                { lines() }
                                                 <tr className="service-total-border">
                                                     <td className="emptyrow"></td>
                                                     <td className="emptyrow"></td>
                                                     <td className="emptyrow text-xs-center"><strong>Total</strong></td>
-                                                    <td className="emptyrow text-xs-right bold">${this.props.service.totalServiceDetails.toFixed(2)}</td>
+                                                    <td className="emptyrow text-xs-right bold">sarasa</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -106,4 +54,4 @@ class ModalServiceDetails extends Component {
     }
 }
 
-export default withAuth(ModalServiceDetails) 
+export default withAuth(ModalRevision) 

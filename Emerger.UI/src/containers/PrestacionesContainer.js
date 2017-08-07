@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from '../components/Nav';
 import Filters from '../components/Prestaciones/Filters';
 import Prestaciones from '../components/Prestaciones/Prestaciones';
-import Footer from '../components/Footer';
+import Footer from '../components/Prestaciones/Footer';
 import withAuth from  '../utils/withAuth';
 import axios from 'axios';
 import moment from 'moment';
@@ -13,21 +13,22 @@ class PrestacionesContainer extends Component {
         super(props);
 
         this.state = {
-        ftrCompany : "",
-        ftrSimplePeriod: "",
-        ftrState: "",
-        companies: [],
-        periods: [],
-        states: [
-            {value: 0, label: 'Todos'},
-            {value: 1, label: 'Reclamados'},
-            {value: 2, label: 'Pendientes'},
-            {value: 3, label: 'Resueltos'}
-        ],
-        services: [],
-        rangeStartDate: null,
-        rangeEndDate: null,
-        selectedDate: moment()
+            ftrCompany : "",
+            ftrSimplePeriod: "",
+            ftrState: "",
+            footer: {},
+            companies: [],
+            periods: [],
+            states: [
+                {value: 0, label: 'Todos'},
+                {value: 1, label: 'Reclamados'},
+                {value: 2, label: 'Pendientes'},
+                {value: 3, label: 'Resueltos'}
+            ],
+            services: [],
+            rangeStartDate: null,
+            rangeEndDate: null,
+            selectedDate: moment()
         }
 
         this.isOutsideRange = this.isOutsideRange.bind(this);
@@ -47,7 +48,18 @@ class PrestacionesContainer extends Component {
             }
         })
         .then(res => {  
-            this.setState({services: res.data.services});
+            this.setState(
+                {
+                    services: res.data.services,
+                    footer : {
+                        company: this.state.ftrCompany.label,
+                        period: this.state.ftrSimplePeriod.label,
+                        servicesQuantity: res.data.services.length,
+                        totalAmount: res.data.services.reduce((total, service) => {
+                            return total + service.amount
+                        }, 0)
+                    }
+                });
         })
         .catch(function(error){
             console.log(error);
@@ -144,7 +156,7 @@ class PrestacionesContainer extends Component {
               isOutsideRange={this.isOutsideRange}
            />
           <Prestaciones services={this.state.services} onCheckService={this.checkService} onSelectService={this.selectService} />
-          <Footer />
+          <Footer footer={this.state.footer} />
       </div>
     )
   }

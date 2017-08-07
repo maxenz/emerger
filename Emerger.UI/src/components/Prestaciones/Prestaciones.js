@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import withAuth from  '../../utils/withAuth';
 import ReactTable from 'react-table';
-import _ from 'lodash';
-import namor from 'namor';
 import moment from 'moment';
 import 'moment/locale/es';
-import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap';
 import ModalServiceDetails from './ModalServiceDetails';
+import ModalRevision from './ModalRevision';
 
 class Prestaciones extends Component {
 
@@ -15,10 +13,12 @@ class Prestaciones extends Component {
 
         this.state = {
             incModal: false,
+            revModal: false,
             selectedService: null
         }
 
         this.toggleIncModal = this.toggleIncModal.bind(this);
+        this.toggleRevModal = this.toggleRevModal.bind(this);
 
     };
 
@@ -27,15 +27,34 @@ class Prestaciones extends Component {
         var service = null;
 
         if (serviceNumber) {            
-            service = this.props.services.filter(function(s){
-                return s.number === serviceNumber;
-            })[0];
+            service = this.getService(serviceNumber);
         } 
 
         this.setState({
             incModal: !this.state.incModal,
             selectedService: service
         });
+    }
+
+    toggleRevModal(serviceNumber) {
+        
+        var service = null;
+
+        if (serviceNumber) {            
+            service = this.getService(serviceNumber);
+        } 
+
+        this.setState({
+            revModal: !this.state.revModal,
+            selectedService: service
+        });
+    }
+
+    getService(number) {   
+
+        return this.props.services.filter(function(s){
+            return s.number === number;
+        })[0];        
     }
  
     render() {
@@ -111,7 +130,8 @@ class Prestaciones extends Component {
                     },
                     {
                         Header: 'Revisar',
-                        Cell: props => <a onClick={this.props.onCheckService} href="javascript:void(0)" >Revisar</a>,
+                        accessor: 'number',
+                        Cell: props => <a onClick={() => this.toggleRevModal(props.value)} href="javascript:void(0)" >{props.value}</a>,
                         style: {textAlign: 'center'}
                     }
                 ]
@@ -123,6 +143,12 @@ class Prestaciones extends Component {
                     {
                         this.state.selectedService ? 
                             <ModalServiceDetails modalOpened={this.state.incModal} onModalToggle={this.toggleIncModal} service={this.state.selectedService} /> 
+                            : null
+                    }
+
+                    {
+                        this.state.selectedService ? 
+                            <ModalRevision modalOpened={this.state.revModal} onModalToggle={this.toggleRevModal} service={this.state.selectedService} /> 
                             : null
                     }
 
